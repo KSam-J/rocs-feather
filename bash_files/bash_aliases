@@ -1,0 +1,106 @@
+# ~/.bash_aliases: executed by ~/.bashrc
+# Defines user aliases
+
+#alias vpn="~/Automation/vpn_globalprotect.sh"
+alias vpn='globalprotect connect -p connect.bench.com -u samkel'
+
+#alias spanthewall="gsettings set org.gnome.desktop.background picture-options spanned"
+alias fortheWin="vboxmanage startvm BenchWin10"
+
+alias ..="cd .."
+alias rebash='. ~/.bashrc'
+alias abashedit='vim ~/.bash_aliases'
+alias vnotes='vim ~/notes'
+alias wttr='~/Automation/wttrin.sh'
+alias post='cd /home/samkel/postbox'
+alias decompress='/home/samkel/Automation/decompress.sh'
+alias nym='~/Automation/synonym.sh'
+alias frep='find | grep -i'
+alias noise='~/Automation/SpeakerBeep.sh 440 3'
+alias acrodict='~/Automation/AcronymDict/acroDict.sh'
+alias repudiate='/home/samkel/Automation/repudiate-process/repudiate.sh'
+alias t='tree -L 1'
+alias tt='tree -L 2'
+alias ttt='tree -L 3'
+alias xc='xclip -selection c'
+alias giopen='/home/samkel/Automation/giopen.sh'
+alias daysum="python3 /home/samkel/Automation/daylog/get_daptiv_summary.py"
+alias dlog="/home/samkel/Automation/daylog/dlog.sh"
+
+# Abbot RFGen ------------------------------------------
+# Aliases for updating the RFGenerator
+#alias srcQt="~/Automation/srcQt.sh"
+
+#alias RFGlr="~/Automation/RFGenKillAndScp.sh; ~/Automation/runRFGenFromConsole.sh"
+
+#alias runRFG="~/Automation/RFGenKillAndRun.sh"
+
+#alias scpRFG1="scp ~/VMsharedFolder/QtProjects/Abbott_RFGen_QTApp/RFGenerator root@10.42.0.176:/opt"
+#alias scpRFG2="scp ~/VMsharedFolder/QtProjects/Abbott_RFGen_QTApp/RFGenerator root@10.42.0.201:/opt"
+
+#alias pingRFG1="ping 10.42.0.176"
+#alias pingRFG2="ping 10.42.0.201"
+#alias sshRFG1="ssh root@10.42.0.176"
+#alias sshRFG2="ssh root@10.42.0.201"
+
+
+# Git shortcuts ------------------------------------------
+#alias gitstache="git stash push -m \" Linux Emulator stuff\" RFPMGenerator.pro RfgenHardware/somwatchdog.cpp"
+#alias gitready="cd ~/VMsharedFolder/QtProjects/Abbott_RFGen_QTApp"
+# Common mis-spelling
+alias gits='git s'
+# Abbott Merlin 2.0 -------------------------------------- 
+
+#alias phasecode="scp /home/samkel/DevFiles/Merlin2_HQTS/Merlin2HQTSrepo/Merlin2_HQTS.sh              root@10.13.101.25:~/KJS_HQTS/"
+#alias mountMerlin="sudo mount -t cifs //mn-s01/Enge/'St Jude'/ /media/rochester -o credentials=/home/samkel/.rochester-smbcredentials,uid=samkel,iocharset=utf8,sec=ntlmssp,vers=1.0"
+
+## Harsco ------------------------------------------------
+
+alias apiredo='docker build -t sleepy-bear:ktest /home/samkel/DevFiles/Harsco/REPO-compass/sleepy-bear && docker run --rm -t -i --name sleepy-bear-ktest -p 5000:5000 sleepy-bear:ktest'
+alias sleepytest='docker build -t sleepy-bear:ktest /home/samkel/DevFiles/Harsco/REPO-compass/sleepy-bear && docker run --rm -t -i --name sleepy-bear-ktest -p 5000:5000 --entrypoint python3.7 sleepy-bear:ktest -m tests.test_db_connections'
+alias aztoken='declare response=$(az account get-access-token) && declare token=$(echo $response | jq ".accessToken" -r)'
+alias mysqlmaster='mysql -uroot -poe3626Z0WKZXsGNnBCrOhTj853hyrX2m2K8yTXAX4fmIUBXEzGKOoLxsY1kkpETKpVLy0TD -h compass.centralus.azurecontainer.io   --ssl-mode=REQUIRED harscocompass'
+alias mysqlcomp2='mysql -uhcadmin@mysql-comp2 -psteam_l0c0motive1909 -h mysql-comp2.mysql.database.azure.com   --ssl-mode=REQUIRED compass2_0'
+
+## Fluke -------------------------------------------------
+
+alias feedlemur='~/Automation/Fluke/load_kernel.sh'
+
+## IKIN --------------------------------------------------
+
+alias edidformat='python3 /home/samkel/Automation/format_EDID.py'
+alias edidstr='python3 /home/samkel/Automation/string_EDID.py'
+
+# Password management ------------------------------------
+
+alias passwordcheck='rpcclient -U samkel@bench.com -c "queryuser 287810" 10.13.99.4 '
+alias passwordx="smbpasswd -r 10.13.99.4 -U samkel"
+
+# ls -----------------------------------------------------
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF --group-directories-first'
+alias lz='unzip -l'
+
+## Docker
+alias dockerssh='/home/samkel/Automation/sshDocker.sh'
+alias dcompose='docker-compose'
+
+### Jump-to-REPO -----------------------------------------
+# Abbott
+alias abracarepo="cd ~/DevFiles/Merlin2_HQTS/Merlin2HQTSrepo"
+# Nuance
+alias arte='cd /home/samkel/DevFiles/Nuance/Titan/BalenaBuild/artemis-kel'
+alias balamd='cd /home/samkel/DevFiles/Nuance/Titan/REPO_balena/balena-amd'
+# Harsco
+alias compass='cd /home/samkel/DevFiles/Harsco/REPO-compass/'
+# Fluke
+alias lemur='cd /home/samkel/DevFiles/Fluke/REPO_pbdock'
+alias pbdock='cd /home/samkel/DevFiles/Fluke/Passport/pbdock/'
+# IKIN
+alias ikin='cd /home/samkel/DevFiles/IKIN/'
+alias stmws='cd /home/samkel/DevFiles/IKIN/stm_ws'
+alias cubeide='repudiate /opt/st/stm32cubeide_1.3.0/stm32cubeide'
+alias ikinscreen='cd /home/samkel/DevFiles/IKIN/stm_ws/screen_g474'
+alias ikincase='cd /home/samkel/DevFiles/IKIN/stm_ws/stm_drop'
+
