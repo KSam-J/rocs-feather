@@ -1,0 +1,13 @@
+gcc
+make
+terminator
+vim
+tree
+silversearcher-ag
+xclip
+# Docker dependencies
+apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
