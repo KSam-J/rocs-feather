@@ -9,22 +9,37 @@ then
 	exit 1
 fi
 
-PACKAGES_BASE="gcc \
-make \
-git"
+PACKAGES_BASE=(
+    gcc         # GNU project C and C++ compiler
+    make        # GNU utility to maintain groups of programs
+    git         # version control
+    smbclient   # ftp-like client to access SMB/CIFS resources
+)
 
-PACKAGES_HANDY="terminator \
-vim \
-tree \
-silversearcher-ag \
-xclip"
+PACKAGES_HANDY=(
+    terminator
+    vim
+    tree
+    silversearcher-ag
+    xclip
+    libdigest-sha3-perl
+    apt-file            # search for files within Debian packages
+)
 
-PACKAGES_DOCKER="apt-transport-https \
-ca-certificates \
-curl \
-gnupg-agent \
-software-properties-common"
+PACKAGES_DOCKER=(
+    apt-transport-https
+    ca-certificates
+    curl
+    gnupg-agent
+    software-properties-common
+)
+
+PACKAGES_BUILD=(
+    lib64ncurses-dev    # developer's libraries for ncurses (64-bit)
+    libxt-dev           # X11 toolkit intrinsics library (development headers)
+    libxaw7-dev         # X11 Athena Widget library (development headers)
+)
 
 if [[ ${pInstallAll} == true ]]; then
-    sudo apt-get install ${PACKAGES_BASE} ${PACKAGES_HANDY} ${PACKAGES_DOCKER}
+    sudo apt-get install ${PACKAGES_BASE[@]} ${PACKAGES_HANDY} ${PACKAGES_DOCKER}
 fi
