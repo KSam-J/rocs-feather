@@ -34,10 +34,12 @@ PACKAGES_DOCKER=(
     software-properties-common
 )
 
-PACKAGES_BUILD=(
+PACKAGES_NETHACK=(
     lib64ncurses-dev    # developer's libraries for ncurses (64-bit)
     libxt-dev           # X11 toolkit intrinsics library (development headers)
     libxaw7-dev         # X11 Athena Widget library (development headers)
+    bison               # YACC-compatible parser generator
+    flex                # fast lexical analyzer generator
 )
 
 if [[ ${pInstallAll} == true ]]; then
