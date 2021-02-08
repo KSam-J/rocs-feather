@@ -24,6 +24,7 @@ PACKAGES_HANDY=(
     xclip
     libdigest-sha3-perl
     apt-file            # search for files within Debian packages
+    lm-sensors          # print sensors information (like cpu temp)
 )
 
 PACKAGES_DOCKER=(
