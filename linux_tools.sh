@@ -2,11 +2,12 @@
 
 pInstallAll=true
 
+SUDO='sudo'
+
 ## Check if user is root
 if [[ `id -u` = "0" ]]
 then
-	echo "This script must NOT be run as root, for root actions, sudo is used internally"
-	exit 1
+    SUDO=''
 fi
 
 PACKAGES_BASE=(
@@ -44,7 +45,10 @@ PACKAGES_NETHACK=(
     bison               # YACC-compatible parser generator
     flex                # fast lexical analyzer generator
 )
-
+set -x
 if [[ ${pInstallAll} == true ]]; then
-    sudo apt-get install ${PACKAGES_BASE[@]} ${PACKAGES_HANDY} ${PACKAGES_DOCKER}
+    ${SUDO} apt-get update
+    ${SUDO} apt-get install -y ${PACKAGES_BASE[@]} ${PACKAGES_HANDY} ${PACKAGES_DOCKER}
+    ${SUDO} rm -rf /var/lib/apt/lists/*
 fi
+set +x
