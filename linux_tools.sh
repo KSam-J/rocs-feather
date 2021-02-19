@@ -25,6 +25,8 @@ PACKAGES_HANDY=(
     libdigest-sha3-perl
     apt-file            # search for files within Debian packages
     lm-sensors          # print sensors information (like cpu temp)
+    texinfo             # Documentation system for on-line information and printed output
+    dos2unix            # DOS/Mac to Unix and vice versa text file format converter
 )
 
 PACKAGES_DOCKER=(
