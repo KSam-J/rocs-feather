@@ -15,10 +15,14 @@ PACKAGES_BASE=(
     make        # GNU utility to maintain groups of programs
     git         # version control
     smbclient   # ftp-like client to access SMB/CIFS resources
+    moreutils   # additional Unix utilities (errno, ...)
+)
+
+PACKAGES_GUI=(
+    terminator
 )
 
 PACKAGES_HANDY=(
-    terminator
     vim
     tree
     silversearcher-ag
@@ -45,10 +49,10 @@ PACKAGES_NETHACK=(
     bison               # YACC-compatible parser generator
     flex                # fast lexical analyzer generator
 )
-set -x
+
 if [[ ${pInstallAll} == true ]]; then
     ${SUDO} apt-get update
     ${SUDO} apt-get install -y ${PACKAGES_BASE[@]} ${PACKAGES_HANDY} ${PACKAGES_DOCKER}
     ${SUDO} rm -rf /var/lib/apt/lists/*
 fi
-set +x
+
