@@ -50,6 +50,27 @@ PACKAGES_NETHACK=(
     flex                # fast lexical analyzer generator
 )
 
+PACKAGES_ALACRITTY=(
+    cmake
+    pkg-config
+    libfreetype6-dev
+    libfontconfig1-dev
+    libxcb-xfixes0-dev
+    libxkbcommon-dev
+    python3
+)
+
+
+if [[ "${1}" == 'handy' ]]; then
+    ${SUDO} apt-get update
+    ${SUDO} apt-get install -y ${PACKAGES_HANDY}
+    ${SUDO} rm -rf /var/lib/apt/lists/*
+
+
+elif [[ -n "${1}" ]]; then
+    pInstallAll=false
+
+
 if [[ ${pInstallAll} == true ]]; then
     ${SUDO} apt-get update
     ${SUDO} apt-get install -y ${PACKAGES_BASE[@]} ${PACKAGES_HANDY} ${PACKAGES_DOCKER}
