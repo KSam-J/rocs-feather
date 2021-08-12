@@ -1,0 +1,3 @@
+bat
+du-dust
+alacritty
