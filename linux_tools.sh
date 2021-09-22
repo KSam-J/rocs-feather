@@ -71,9 +71,12 @@ elif [[ -n "${1}" ]]; then
     pInstallAll=false
 
 
-if [[ ${pInstallAll} == true ]]; then
+elif [[ ${pInstallAll} == true ]]; then
     ${SUDO} apt-get update
     ${SUDO} apt-get install -y ${PACKAGES_BASE[@]} ${PACKAGES_HANDY} ${PACKAGES_DOCKER}
     ${SUDO} rm -rf /var/lib/apt/lists/*
+
+else
+    echo "PANIC PANIC PANIC"
 fi
 

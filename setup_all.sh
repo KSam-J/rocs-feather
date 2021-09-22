@@ -1,4 +1,6 @@
 #!/bin/bash
 
 # Copy over the bashrc and aliases
-. ./bash_files/setup.sh
+cd bash_files
+. ./setup.sh
+cd ..
