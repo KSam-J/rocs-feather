@@ -1,16 +1,15 @@
 
 FROM ubuntu:20.10
 
-WORKDIR /rocs
+WORKDIR /rocs_feather
 
-# Install git
-RUN apt-get update && \
-    apt-get install -y git && \
-    rm -rf /var/lib/apt/lists/*
+ENV TZ=US/Arizona
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN git clone https://github.com/KSam-J/rocs-feather.git
+# Build context should be: rocs_feather base directory
+COPY . .
 
-RUN cd rocs-feather && \
-    ./linux_tools.sh handy
+RUN ./linux_tools.sh handy
+RUN ./setup_all.sh
 
 CMD ["bash"]
