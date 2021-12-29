@@ -63,9 +63,9 @@ set hlsearch
 
 set background=dark
 
-let g:badwolf_darkgutter = 1    " Make gutter darker than background
-let g:badwolf_tabline = 3       " Make tabline lighter than background
-colorscheme badwolf             " Badwolf colorscheme
+" let g:badwolf_darkgutter = 1    " Make gutter darker than background
+" let g:badwolf_tabline = 3       " Make tabline lighter than background
+" colorscheme badwolf             " Badwolf colorscheme
 "colorscheme mustang
 
 syntax enable                   " Enable syntax highlighting
