@@ -2,5 +2,6 @@
 
 # Scripts and commands to be run on login
 
+source ~/.bashrc
 
 export PATH="$HOME/.cargo/bin:$PATH"
