@@ -1,0 +1,117 @@
+live_config_reload: true
+
+# Font configuration
+font: #   # Normal (roman) font face
+  normal:
+     #Font family
+
+     # Default:
+       # - (macOS) Menlo
+       # - (Linux/BSD) monospace
+       # - (Windows) Consolas
+    family: "Cascadia Code"
+
+    # The `style` can be specified to pick a specific face.
+    style: Regular
+
+  # Bold font face
+  bold:
+    # Font family
+    #
+    # If the bold family is not specified, it will fall back to the
+    # value specified for the normal font.
+    family: "Cascadia Code"
+
+    # The `style` can be specified to pick a specific face.
+    style: Bold
+
+  # Italic font face
+  italic:
+    # Font family
+    #
+    # If the italic family is not specified, it will fall back to the
+    # value specified for the normal font.
+    family: "Cascadia Code"
+
+    # The `style` can be specified to pick a specific face.
+    style: Italic
+
+  # Bold italic font face
+  bold_italic:
+    # Font family
+    #
+    # If the bold italic family is not specified, it will fall back to the
+    # value specified for the normal font.
+    family: "Cascadia Code"
+
+    # The `style` can be specified to pick a specific face.
+    style: Bold Italic
+
+  # Point size
+  #size: 11.0
+
+# Colors (Blood Moon)
+colors:
+  # Default colors
+  primary:
+    background: '#181D1D'
+    foreground: '#C6C6C4'
+
+  # Normal colors
+  normal:
+    black:   '#10100E'
+    red:     '#C40233'
+    green:   '#009F6B'
+    yellow:  '#FFD700'
+    blue:    '#0087BD'
+    magenta: '#9A4EAE'
+    cyan:    '#20B2AA'
+    white:   '#C6C6C4'
+
+  # Bright colors
+  bright:
+    black:   '#696969'
+    red:     '#FF2400'
+    green:   '#03C03C'
+    yellow:  '#FDFF00'
+    blue:    '#007FFF'
+    magenta: '#FF1493'
+    cyan:    '#00CCCC'
+    white:   '#FFFAFA'
+
+# # Base16 Ocean - alacritty color config
+# # Chris Kempson (http://chriskempson.com)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x2b303b'
+#     foreground: '0xc0c5ce'
+# 
+#   # Colors the cursor will use if `custom_cursor_colors` is true
+#   cursor:
+#     text: '0x2b303b'
+#     cursor: '0xc0c5ce'
+# 
+#   # Normal colors
+#   normal:
+#     black:   '0x2b303b'
+#     red:     '0xbf616a'
+#     green:   '0xa3be8c'
+#     yellow:  '0xebcb8b'
+#     blue:    '0x8fa1b3'
+#     magenta: '0xb48ead'
+#     cyan:    '0x96b5b4'
+#     white:   '0xc0c5ce'
+# 
+#   # Bright colors
+#   bright:
+#     black:   '0x65737e'
+#     red:     '0xd08770'
+#     green:   '0x343d46'
+#     yellow:  '0x4f5b66'
+#     blue:    '0xa7adba'
+#     magenta: '0xdfe1e8'
+#     cyan:    '0xab7967'
+#     white:   '0xeff1f5'
+# 
+# draw_bold_text_with_bright_colors: false
