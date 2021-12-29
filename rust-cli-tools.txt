@@ -1,3 +1,2 @@
 bat
 du-dust
-alacritty

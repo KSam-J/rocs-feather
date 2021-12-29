@@ -1,5 +1,7 @@
 live_config_reload: true
 
+chosen_font: &font "monospace"
+
 # Font configuration
 font: #   # Normal (roman) font face
   normal:
@@ -9,7 +11,7 @@ font: #   # Normal (roman) font face
        # - (macOS) Menlo
        # - (Linux/BSD) monospace
        # - (Windows) Consolas
-    family: "Cascadia Code"
+    family: *font
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -20,7 +22,7 @@ font: #   # Normal (roman) font face
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: "Cascadia Code"
+    family: *font
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -31,7 +33,7 @@ font: #   # Normal (roman) font face
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: "Cascadia Code"
+    family: *font
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -42,7 +44,7 @@ font: #   # Normal (roman) font face
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: "Cascadia Code"
+    family: *font
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic

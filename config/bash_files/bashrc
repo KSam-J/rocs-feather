@@ -189,8 +189,8 @@ else
 fi
 
 ## Alacritty -----------------
-if [[ -e /home/samkel/Repos/alacritty/extra/completions/alacritty.bash ]]; then
-    source /home/samkel/Repos/alacritty/extra/completions/alacritty.bash
+if [[ -e ~/.config/alacritty/alacritty.bash ]]; then
+    source ~/.config/alacritty/alacritty.bash
 else
     echo 'Alacritty not set in bashrc'
 fi
