@@ -1,6 +1,0 @@
-# .bash_profile
-
-# Scripts and commands to be run on login
-
-
-export PATH="$HOME/.cargo/bin:$PATH"
