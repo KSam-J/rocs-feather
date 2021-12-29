@@ -24,6 +24,7 @@ PACKAGES_GUI=(
 
 PACKAGES_HANDY=(
     vim
+    tmux
     tree
     silversearcher-ag
     xclip
@@ -73,7 +74,7 @@ elif [[ -n "${1}" ]]; then
 
 elif [[ ${pInstallAll} == true ]]; then
     ${SUDO} apt-get update
-    ${SUDO} apt-get install -y ${PACKAGES_BASE[@]} ${PACKAGES_HANDY} ${PACKAGES_DOCKER}
+    ${SUDO} apt-get install -y ${PACKAGES_BASE[@]} ${PACKAGES_HANDY} ${PACKAGES_DOCKER} ${PACKAGES_ALACRITTY}
     ${SUDO} rm -rf /var/lib/apt/lists/*
 
 else
