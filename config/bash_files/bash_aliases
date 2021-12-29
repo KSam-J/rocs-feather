@@ -2,30 +2,47 @@
 # Defines user aliases
 
 #alias vpn="~/Automation/vpn_globalprotect.sh"
-alias vpn='globalprotect connect -p connect.bench.com -u samkel'
-
+#alias vpn='globalprotect connect -p connect.bench.com -u samkel'
+alias vpn='sudo openconnect --protocol=gp --user=$USER secureconnect.bench.com'
+alias tvpn='tmux a -t vpn || tmux new -As vpn'
+alias woodfall='~/Automation/pandoras-box/tmux_woodfall.sh'
 #alias spanthewall="gsettings set org.gnome.desktop.background picture-options spanned"
 alias fortheWin="vboxmanage startvm BenchWin10"
 
 alias ..="cd .."
 alias rebash='. ~/.bashrc'
 alias abashedit='vim ~/.bash_aliases'
-alias vnotes='vim ~/notes'
-alias wttr='~/Automation/wttrin.sh'
+alias vnotes='vim ~/journal/Kompendium/notes'
+alias wttr='~/Automation/pandoras-box/wttrin.sh'
 alias post='cd /home/samkel/postbox'
 alias decompress='/home/samkel/Automation/decompress.sh'
 alias nym='~/Automation/synonym.sh'
-alias frep='find | grep -i'
-alias noise='~/Automation/SpeakerBeep.sh 440 3'
+alias frep='find | grep -iP'
+alias noise='~/Automation/SpeakerBeep.sh 700 3'
 alias acrodict='~/Automation/AcronymDict/acroDict.sh'
-alias repudiate='/home/samkel/Automation/repudiate-process/repudiate.sh'
+alias repudiate='/home/samkel/Automation/pandoras-box/repudiate.sh'
 alias t='tree -L 1'
 alias tt='tree -L 2'
 alias ttt='tree -L 3'
 alias xc='xclip -selection c'
-alias giopen='/home/samkel/Automation/giopen.sh'
-alias daysum="python3 /home/samkel/Automation/daylog/get_daptiv_summary.py"
-alias dlog="/home/samkel/Automation/daylog/dlog.sh"
+alias giopen='/home/samkel/Automation/pandoras-box/giopen.sh'
+alias daysum="python3 /home/samkel/Automation/daylog/daysum.py"
+alias dlog="/home/samkel/Automation/daylog/dlog.py"
+alias iotbench="sudo /home/samkel/journal/Modifications/new_iot_bench_resolve.sh"
+alias actipy="source /home/samkel/Automation/py_env_activate.sh"
+alias dockerls='/home/samkel/Automation/pandoras-box/docker_showall.sh'
+alias bat='batcat'
+alias sudolast='sudo $(history -p !!)'
+alias updoot='sudo apt update && sudo apt upgrade'
+alias kompendium='cd ~/journal/Kompendium'
+alias rosup='source /home/samkel/ros2_galactic/ros2-linux/setup.bash && export ROS_DOMAIN_ID=67'
+
+alias agc="ag -G '.*\.[ch]'"
+
+# Executables ------------------------------------------
+alias nethack='/home/samkel/nh/install/games/nethack'
+
+alias bashly='docker run --rm -it --volume "$PWD:/app" dannyben/bashly'
 
 # Abbot RFGen ------------------------------------------
 # Aliases for updating the RFGenerator
@@ -71,13 +88,17 @@ alias feedlemur='~/Automation/Fluke/load_kernel.sh'
 alias edidformat='python3 /home/samkel/Automation/format_EDID.py'
 alias edidstr='python3 /home/samkel/Automation/string_EDID.py'
 
+## Benchmark Internal Projects
+# WEE
+alias dockup='~/Automation/dockup.sh'
+
 # Password management ------------------------------------
 
 alias passwordcheck='rpcclient -U samkel@bench.com -c "queryuser 287810" 10.13.99.4 '
 alias passwordx="smbpasswd -r 10.13.99.4 -U samkel"
 
 # ls -----------------------------------------------------
-alias ll='ls -alF'
+alias ll='ls -AlF'
 alias la='ls -A'
 alias l='ls -CF --group-directories-first'
 alias lz='unzip -l'
@@ -98,9 +119,14 @@ alias compass='cd /home/samkel/DevFiles/Harsco/REPO-compass/'
 alias lemur='cd /home/samkel/DevFiles/Fluke/REPO_pbdock'
 alias pbdock='cd /home/samkel/DevFiles/Fluke/Passport/pbdock/'
 # IKIN
-alias ikin='cd /home/samkel/DevFiles/IKIN/'
+alias ikin='cd /home/samkel/Bench/Ikin'
 alias stmws='cd /home/samkel/DevFiles/IKIN/stm_ws'
-alias cubeide='repudiate /opt/st/stm32cubeide_1.3.0/stm32cubeide'
+alias cubeide='repudiate /opt/st/stm32cubeide_1.5.1/stm32cubeide'
+alias cubeprog='/opt/st/STM32CubeProgrammer/cubeprog.sh'
 alias ikinscreen='cd /home/samkel/DevFiles/IKIN/stm_ws/screen_g474'
 alias ikincase='cd /home/samkel/DevFiles/IKIN/stm_ws/stm_drop'
+# Benchmark
+alias wee='cd /home/samkel/Bench/Wee_Heavy/liveware-problem/backup/docker_backup'
+# Caterpillar
+alias cpillar='cd /home/samkel/Bench/Caterpillar'
 
