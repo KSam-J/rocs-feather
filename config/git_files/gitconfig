@@ -2,6 +2,9 @@
 	name = Kellen J. Sam
 	email = kellen.sam@bench.com
 
+[core]
+    editor = vim
+
 
 [alias]
   delouse = echo "money penny"
