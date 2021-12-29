@@ -1,0 +1,3 @@
+
+# Artha Thesaurus
+ppa:legends2k/artha
