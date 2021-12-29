@@ -16,3 +16,7 @@ ln -sf alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 
 # tmux
 ln -sf tmux/.tmux.conf ~/.tmux.conf
+
+# git
+ln -sf git_files/gitconfig ~/.gitconfig
+
