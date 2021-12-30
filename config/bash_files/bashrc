@@ -196,7 +196,7 @@ else
 fi
 
 # FZF ---------------------------------------------------
-if [[ -x fzf ]]; then
+if [[ -x /usr/bin/fzf ]]; then
     # Keybinding and fuzzy auto completion
     source /usr/share/doc/fzf/examples/key-bindings.bash
     source /usr/share/doc/fzf/examples/completion.bash
