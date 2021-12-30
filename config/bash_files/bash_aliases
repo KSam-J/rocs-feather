@@ -31,7 +31,6 @@ alias dlog="/home/samkel/Automation/daylog/dlog.py"
 alias iotbench="sudo /home/samkel/journal/Modifications/new_iot_bench_resolve.sh"
 alias actipy="source /home/samkel/Automation/py_env_activate.sh"
 alias dockerls='/home/samkel/Automation/pandoras-box/docker_showall.sh'
-alias bat='batcat'
 alias sudolast='sudo $(history -p !!)'
 alias updoot='sudo apt update && sudo apt upgrade'
 alias kompendium='cd ~/journal/Kompendium'
