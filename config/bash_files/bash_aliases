@@ -33,7 +33,7 @@ alias dockerls='/home/samkel/Automation/pandoras-box/docker_showall.sh'
 alias sudolast='sudo $(history -p !!)'
 alias updoot='sudo apt update && sudo apt upgrade'
 alias kompendium='cd ~/journal/Kompendium'
-alias rosup='source /home/samkel/ros2_galactic/ros2-linux/setup.bash && export ROS_DOMAIN_ID=67'
+alias rosup='source /opt/ros/foxy/setup.bash && export ROS_DOMAIN_ID=67'
 
 alias agc="ag -G '.*\.[ch]'"
 
