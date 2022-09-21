@@ -33,7 +33,7 @@
   ap = add -p
   ### branch ###
   ### commit ###
-  cm = commit -m
+  cm = !commit_w_jtag.sh
   ### checkout ###
   tr = checkout --track
   ### cherry-pick ###
