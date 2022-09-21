@@ -19,4 +19,5 @@ ln -sir tmux/.tmux.conf ~/.tmux.conf
 
 # git
 ln -sir git_files/gitconfig ~/.gitconfig
+sudo ln -sir git_files/commit_w_jtag.sh /usr/bin/
 
