@@ -6,19 +6,31 @@ J_TAG_REGEX='^[A-Z]{1,4}-\d{1,4}'
 
 # Get the Jira Tag from the branch name
 J_TAG=$(git branch --show-current | grep --perl-regexp --only-matching "${J_TAG_REGEX}")
-
 # Check that J_TAG is populated
-if [[ -n ${J_TAG} ]]; then
-    if [[ -n ${ONE_LINER} ]]; then
-        git commit --message="[${J_TAG}] ${ONE_LINER}"
-    else
-        git commit --message="[${J_TAG}] " --edit
+if [[ -z ${J_TAG} ]]; then
+    J_TAG=NOTRACKER
+fi
+
+MESSAGE=''
+EDIT=0  # True
+# Process one_liner if provided
+if [[ -n ${ONE_LINER} ]]; then
+    MESSAGE="[${J_TAG}] ${ONE_LINER}"
+
+    # Don't edit if within char limit
+    if [[ ${#MESSAGE} -le 50 ]]; then
+        EDIT=1  # False
+        echo "EDIT = ${EDIT}"
     fi
+
 else
-    if [[ -n ${ONE_LINER} ]]; then
-        git commit --message="[NOTRACKER] ${ONE_LINER}" --edit
-    else
-        git commit --message="[NOTRACKER] " --edit
-    fi
+    MESSAGE="[${J_TAG}] "
+fi
+
+# Execute git commit
+if [[ ${EDIT} -eq 0 || ${J_TAG} == 'NOTRACKER' ]]; then
+    git commit --message="${MESSAGE}" --edit
+else
+    git commit --message="${MESSAGE}"
 fi
 
