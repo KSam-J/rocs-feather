@@ -1,0 +1,17 @@
+#!/bin/bash
+# Reclaim filenames from their whitespace oppressors
+
+FILENAME="${1}"
+
+# Remove the whiteness(whitespace)
+RECLAIMED_NAME=$(echo -n "${FILENAME}" | sed -r 's/ /_/g')
+
+# This catches the case that a path element contains a space
+# in addition to the filename
+if [[ "${FILENAME}" =~ "/" ]]; then
+	echo "Can't reclaim outside of cwd"
+	exit 1
+fi
+
+# Perform the renaming and print the new name
+mv "${FILENAME}" "${RECLAIMED_NAME}" && echo $RECLAIMED_NAME
