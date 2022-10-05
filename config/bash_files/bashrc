@@ -228,3 +228,8 @@ else
     echo 'ForGit not set in bashrc'
 fi
 
+# ROCS-FEATHER -----------------------------------------
+if [[ -n ${ROCS_PATH} ]]; then
+    export PATH="${PATH}:${ROCS_PATH}/bin"
+fi
+
