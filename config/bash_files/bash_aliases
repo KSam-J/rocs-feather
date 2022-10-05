@@ -103,9 +103,16 @@ alias passwordcheck='rpcclient -U samkel@bench.com -c "queryuser 287810" 10.13.9
 alias passwordx="smbpasswd -r 10.13.99.4 -U samkel"
 
 # ls -----------------------------------------------------
-alias ll='ls -AlF'
-alias la='ls -A'
-alias l='ls -CF --group-directories-first'
+if [ -x $(which exa) ]; then
+    alias l='exa --classify --group-directories-first'
+    alias ll='exa --long --all'
+    alias la='exa --classify --all'
+else
+    alias l='ls -CF --group-directories-first'
+    alias ll='ls -AlF'
+    alias la='ls -A'
+fi
+
 alias lz='unzip -l'
 
 ## Docker
