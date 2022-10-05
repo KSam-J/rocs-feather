@@ -66,6 +66,10 @@ alias bashly='docker run --rm -it --volume "$PWD:/app" dannyben/bashly'
 #alias gitready="cd ~/VMsharedFolder/QtProjects/Abbott_RFGen_QTApp"
 # Common mis-spelling
 alias gits='git s'
+# Bench --------------------------------------------------
+
+alias mounto='sudo mount -t cifs //mn-s08/Enge . -o user=samkel,iocharset=utf8,sec=ntlmssp'
+
 # Abbott Merlin 2.0 -------------------------------------- 
 
 #alias phasecode="scp /home/samkel/DevFiles/Merlin2_HQTS/Merlin2HQTSrepo/Merlin2_HQTS.sh              root@10.13.101.25:~/KJS_HQTS/"
