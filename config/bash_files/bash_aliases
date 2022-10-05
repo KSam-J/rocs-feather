@@ -6,6 +6,8 @@ alias tvpn='tmux a -t vpn || tmux new -As vpn'
 alias woodfall='~/Automation/pandoras-box/tmux_woodfall.sh'
 #alias spanthewall="gsettings set org.gnome.desktop.background picture-options spanned"
 alias fortheWin="vboxmanage startvm BenchWin10"
+# Make ripgrep case insensitive, and search all files by default
+alias rg="rg --smart-case --hidden --no-ignore"
 
 alias ..="cd .."
 alias rebash='. ~/.bashrc'
