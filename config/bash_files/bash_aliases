@@ -91,6 +91,7 @@ alias feedlemur='~/Automation/Fluke/load_kernel.sh'
 
 alias edidformat='python3 /home/samkel/Automation/format_EDID.py'
 alias edidstr='python3 /home/samkel/Automation/string_EDID.py'
+alias ryzmux='~/Automation/pandoras-box/tmux_ryz.sh'
 
 ## Benchmark Internal Projects
 # WEE
