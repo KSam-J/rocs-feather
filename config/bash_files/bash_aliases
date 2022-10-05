@@ -4,7 +4,6 @@
 alias vpn='sudo openconnect --protocol=gp --user=$USER secureconnect.bench.com'
 alias tvpn='tmux a -t vpn || tmux new -As vpn'
 alias woodfall='~/Automation/pandoras-box/tmux_woodfall.sh'
-#alias spanthewall="gsettings set org.gnome.desktop.background picture-options spanned"
 alias fortheWin="vboxmanage startvm BenchWin10"
 # Make ripgrep case insensitive, and search all files by default
 alias rg="rg --smart-case --hidden --no-ignore"
@@ -36,6 +35,9 @@ alias kompendium='cd ~/journal/Kompendium'
 alias rosup='source /opt/ros/foxy/setup.bash && export ROS_DOMAIN_ID=67'
 
 alias agc="ag -G '.*\.[ch]'"
+
+# Set the current Wallpaper to be spanned across multiple displays
+#alias spanthewall="gsettings set org.gnome.desktop.background picture-options spanned"
 
 # Executables ------------------------------------------
 alias nethack='/home/samkel/nh/install/games/nethack'
