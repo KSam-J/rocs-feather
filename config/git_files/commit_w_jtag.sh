@@ -20,7 +20,6 @@ if [[ -n ${ONE_LINER} ]]; then
     # Don't edit if within char limit
     if [[ ${#MESSAGE} -le 50 ]]; then
         EDIT=1  # False
-        echo "EDIT = ${EDIT}"
     fi
 
 else
