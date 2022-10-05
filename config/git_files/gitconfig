@@ -34,6 +34,7 @@
   ### branch ###
   ### commit ###
   cm = !commit_w_jtag.sh
+  cn = commit --message
   ### checkout ###
   tr = checkout --track
   ### cherry-pick ###

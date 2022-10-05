@@ -1,8 +1,6 @@
 # ~/.bash_aliases: executed by ~/.bashrc
 # Defines user aliases
 
-#alias vpn="~/Automation/vpn_globalprotect.sh"
-#alias vpn='globalprotect connect -p connect.bench.com -u samkel'
 alias vpn='sudo openconnect --protocol=gp --user=$USER secureconnect.bench.com'
 alias tvpn='tmux a -t vpn || tmux new -As vpn'
 alias woodfall='~/Automation/pandoras-box/tmux_woodfall.sh'
