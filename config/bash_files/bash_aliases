@@ -134,7 +134,7 @@ alias pbdock='cd /home/samkel/DevFiles/Fluke/Passport/pbdock/'
 alias ikin='cd /home/samkel/Bench/Ikin'
 alias stmws='cd /home/samkel/DevFiles/IKIN/stm_ws'
 alias cubeide='repudiate /opt/st/stm32cubeide_1.5.1/stm32cubeide'
-alias cubeprog='/opt/st/STM32CubeProgrammer/cubeprog.sh'
+alias cubeprog='repudiate ~/STM32Cube/STM32CubeProgrammer/bin/STM32CubeProgrammer'
 alias ikinscreen='cd /home/samkel/DevFiles/IKIN/stm_ws/screen_g474'
 alias ikincase='cd /home/samkel/DevFiles/IKIN/stm_ws/stm_drop'
 # Benchmark
