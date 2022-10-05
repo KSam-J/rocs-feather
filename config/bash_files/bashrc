@@ -151,10 +151,6 @@ fi
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -175,9 +171,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Zephyr west bash completion script originally for owlet
-#source ~/west-completion.bash
-
 # Enable printing of icons https://github.com/sebastiencs/icons-in-terminal.git
 # source ~/.local/share/icons-in-terminal/icons_bash.sh
 
@@ -189,6 +182,7 @@ else
 fi
 
 ## Alacritty -----------------
+# Copy from <alacritty-repo>/extra/completions/alacritty.bash -> .config
 if [[ -e ~/.config/alacritty/alacritty.bash ]]; then
     source ~/.config/alacritty/alacritty.bash
 else
@@ -219,4 +213,8 @@ fi
 
 # Flutter ----------------------------------------------
 export CHROME_EXECUTABLE=/snap/bin/chromium
+
+# History mods -----------------------------------------
+export HISTCONTROL=ignoreboth
+export HISTIGNORE="l:ls:la:ll:.."
 
