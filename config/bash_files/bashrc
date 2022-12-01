@@ -175,10 +175,11 @@ fi
 # source ~/.local/share/icons-in-terminal/icons_bash.sh
 
 # Rust ----------------------
-if [[ -e $HOME/.cargo/env ]]; then
-    source "$HOME/.cargo/env"
+CARGO_ENV="$HOME/.cargo/env"
+if [[ -e $CARGO_ENV ]]; then
+    source "$CARGO_ENV"
 else
-    echo 'Rust not set in bashrc'
+    echo "$CARGO_ENV does not exist"
 fi
 
 ## Alacritty -----------------
