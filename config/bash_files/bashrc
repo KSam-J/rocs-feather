@@ -222,7 +222,7 @@ export HISTIGNORE="l:ls:la:ll:.."
 # ForGit -----------------------------------------------
 if [[ -e ~/Repos/forgit/bin/git-forgit ]]; then
     export FORGIT_INSTALL_DIR="$HOME/Repos/forgit"
-    if [[ ${PATH} =~ "$FORGIT_INSTALL_DIR/bin" ]]; then
+    if [[ ! "${PATH}" =~ "$FORGIT_INSTALL_DIR/bin" ]]; then
         export PATH="$PATH:$FORGIT_INSTALL_DIR/bin"
     fi
 else
