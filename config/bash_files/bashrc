@@ -241,3 +241,5 @@ else
     echo 'Bat not installed, manpager is boring'
 fi
 
+# UNTRACKED --------------------------------------------
+
