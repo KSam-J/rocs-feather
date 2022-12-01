@@ -234,3 +234,10 @@ if [[ -n ${ROCS_PATH} ]]; then
     export PATH="${PATH}:${ROCS_PATH}/bin"
 fi
 
+# BAT Manpager ----------------------------------------
+if [[ -x /usr/bin/bat ]]; then
+    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+else
+    echo 'Bat not installed, manpager is boring'
+fi
+
