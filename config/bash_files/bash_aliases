@@ -1,14 +1,22 @@
 # ~/.bash_aliases: executed by ~/.bashrc
 # Defines user aliases
 
-alias vpn='sudo openconnect --protocol=gp --user=$USER secureconnect.bench.com'
+alias vpn='sudo openconnect --protocol=gp --user=$USER secureconnect.bench.com/ssl-vpn'
 alias tvpn='tmux a -t vpn || tmux new -As vpn'
 alias woodfall='~/Automation/pandoras-box/tmux_woodfall.sh'
 alias fortheWin="vboxmanage startvm BenchWin10"
+alias iarvm="vboxmanage startvm WindowsBenchmark"
 # Make ripgrep case insensitive, and search all files by default
-alias rg="rg --smart-case --hidden --no-ignore"
+alias rg="rg --smart-case --engine auto -L"
+alias dff='/home/samkel/Bench/Cerus/dff/dff.py'
+alias batman='bat -l man -p'
 
 alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
 alias rebash='. ~/.bashrc'
 alias abashedit='vim ~/.bash_aliases'
 alias vnotes='vim ~/journal/Kompendium/notes'
@@ -34,7 +42,6 @@ alias updoot='sudo apt update && sudo apt upgrade'
 alias kompendium='cd ~/journal/Kompendium'
 alias rosup='source /opt/ros/foxy/setup.bash && export ROS_DOMAIN_ID=67'
 
-alias agc="ag -G '.*\.[ch]'"
 
 # Set the current Wallpaper to be spanned across multiple displays
 #alias spanthewall="gsettings set org.gnome.desktop.background picture-options spanned"
@@ -92,6 +99,8 @@ alias feedlemur='~/Automation/Fluke/load_kernel.sh'
 alias edidformat='python3 /home/samkel/Automation/format_EDID.py'
 alias edidstr='python3 /home/samkel/Automation/string_EDID.py'
 alias ryzmux='~/Automation/pandoras-box/tmux_ryz.sh'
+alias handshake='echo -en '\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00' > /dev/ttyACM0'
+alias bootloader='echo -en '\x00\x00\x00\x00\x00\x05\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00' > /dev/ttyACM0'
 
 ## Benchmark Internal Projects
 # WEE
@@ -103,10 +112,10 @@ alias passwordcheck='rpcclient -U samkel@bench.com -c "queryuser 287810" 10.13.9
 alias passwordx="smbpasswd -r 10.13.99.4 -U samkel"
 
 # ls -----------------------------------------------------
-if [ -x $(which exa) ]; then
-    alias l='exa --classify --group-directories-first'
-    alias ll='exa --long --all'
-    alias la='exa --classify --all'
+if [ -x  ~/.cargo/bin/lsd ]; then
+    alias l='lsd --classify --group-directories-first'
+    alias ll='lsd --long --all'
+    alias la='lsd --classify --group-directories-first --all'
 else
     alias l='ls -CF --group-directories-first'
     alias ll='ls -AlF'
@@ -133,12 +142,16 @@ alias pbdock='cd /home/samkel/DevFiles/Fluke/Passport/pbdock/'
 # IKIN
 alias ikin='cd /home/samkel/Bench/Ikin'
 alias stmws='cd /home/samkel/DevFiles/IKIN/stm_ws'
-alias cubeide='repudiate /opt/st/stm32cubeide_1.5.1/stm32cubeide'
-alias cubeprog='repudiate ~/STM32Cube/STM32CubeProgrammer/bin/STM32CubeProgrammer'
+alias cubeide='repudiate /usr/local/STMicroelectronics/STM32Cube/stm32cubeide_1.13.1/stm32cubeide'
+alias cubeprog='~/STM32Cube/STM32CubeProgrammer/bin/STM32_Programmer_CLI'
 alias ikinscreen='cd /home/samkel/DevFiles/IKIN/stm_ws/screen_g474'
 alias ikincase='cd /home/samkel/DevFiles/IKIN/stm_ws/stm_drop'
 # Benchmark
 alias wee='cd /home/samkel/Bench/Wee_Heavy/liveware-problem/backup/docker_backup'
 # Caterpillar
 alias cpillar='cd /home/samkel/Bench/Caterpillar'
-
+# Cerus
+alias cerus='cd /home/samkel/Bench/Cerus'
+# Lynntech
+alias lynn='cd ~/Bench/Lynntech'
+alias ldock='cd ~/Bench/Lynntech/docker-yocto-build'
