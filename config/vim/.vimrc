@@ -68,5 +68,24 @@ set background=dark
 " colorscheme badwolf             " Badwolf colorscheme
 "colorscheme mustang
 
-syntax enable                   " Enable syntax highlighting
 
+" vim-plug ---------------------------------------------------------------------------
+" Install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Manage Plugins
+"PLUGIN_DIR='~/.vim/plugged'
+call plug#begin('~/.vim/plugged')
+
+Plug 'sheerun/vim-polyglot'
+Plug 'nordtheme/vim'
+Plug 'tpope/vim-sensible'
+
+call plug#end()
+
+set path=.,**
+set wildmode=list:full
