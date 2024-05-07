@@ -243,7 +243,7 @@ if [[ -n ${ROCS_PATH} ]]; then
 fi
 
 # BAT Manpager ----------------------------------------
-if [[ -x /usr/bin/bat ]]; then
+if [[ -x /usr/bin/bat || -x ~/.cargo/bin/bat ]]; then
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 else
     echo 'Bat not installed, manpager is boring'
@@ -251,3 +251,55 @@ fi
 
 # UNTRACKED --------------------------------------------
 
+# Number Conversion Functions
+# Hex to binary function
+h2b() {
+     echo 'ibase=16;obase=2;'${1^^} | bc
+ }
+
+# Binary to hex
+b2h() {
+    echo 'obase=16;ibase=2;'$1 | bc
+}
+# Decimal to binary
+d2b() {
+    echo 'ibase=10;obase=2;'$1 | bc
+}
+
+# Binary to decimal
+b2d() {
+    echo 'ibase=2;'$1 | bc
+}
+
+# Decimal to hex
+d2h() {
+    echo 'ibase=10;obase=16;'$1 | bc
+}
+
+# Hex to decimal
+h2d() {
+    echo 'ibase=16;'${1^^} | bc
+}
+
+ROCS_PATH="/home/samkel/Repos/rocs-feather"
+
+if [[ -x /usr/bin/thefuck ]]; then
+    eval "$(thefuck --alias)"
+fi
+
+if [[ -e ~/.rbenv/bin/rbenv ]]; then
+    eval "$(~/.rbenv/bin/rbenv init - bash)"
+fi
+
+# PYENV
+if [[ -x /usr/bin/pyenv ]]; then
+    export PATH="$HOME/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+. "$HOME/.cargo/env"
+
+
+batman() {
+    ${1} --help | bat -l man -p
+}

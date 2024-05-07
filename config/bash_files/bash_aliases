@@ -9,7 +9,7 @@ alias iarvm="vboxmanage startvm WindowsBenchmark"
 # Make ripgrep case insensitive, and search all files by default
 alias rg="rg --smart-case --engine auto -L"
 alias dff='/home/samkel/Bench/Cerus/dff/dff.py'
-alias batman='bat -l man -p'
+#alias batman='bat -l man -p'
 
 alias ..="cd .."
 alias ...="cd ../.."
