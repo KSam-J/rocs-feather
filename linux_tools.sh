@@ -14,8 +14,10 @@ PACKAGES_BASE=(
     gcc         # GNU project C and C++ compiler
     make        # GNU utility to maintain groups of programs
     git         # version control
+    git-delta   # Better diff view
     smbclient   # ftp-like client to access SMB/CIFS resources
     moreutils   # additional Unix utilities (errno, ...)
+    curl        # Used by many installer scripts to pull from the web
 )
 
 PACKAGES_GUI=(
