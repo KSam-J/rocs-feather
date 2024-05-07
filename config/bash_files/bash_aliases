@@ -154,4 +154,8 @@ alias cpillar='cd /home/samkel/Bench/Caterpillar'
 alias cerus='cd /home/samkel/Bench/Cerus'
 # Lynntech
 alias lynn='cd ~/Bench/Lynntech'
+alias lmotor='cd ~/Bench/Lynntech/repos/motor-control-firmware'
 alias ldock='cd ~/Bench/Lynntech/docker-yocto-build'
+alias motormux='~/Automation/pandoras-box/tmux_motor.sh'
+alias lbuild='/home/samkel/Bench/Lynntech/repos/motor-control-firmware/scripts/build.sh'
+alias gdbpy='~/Automation/pandoras-box/gdbpy.sh'
