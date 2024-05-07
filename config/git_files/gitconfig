@@ -1,9 +1,20 @@
 [user]
 	name = Kellen J. Sam
-	email = kellen.sam@bench.com
+	email = samkel@bench.com
+
+[branch]
+    sort = committerdate
 
 [core]
     editor = vim
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+  line-numbers = true
 
 
 [alias]
@@ -71,9 +82,11 @@
   # log with a text-based graphical representation of the commit history.
   lk = !git lg1-specific
   lka = !git lg1-specific --all
+  lkb = !git lg1b-specific --all
   lk2 = !git lg2-specific --all
   lg3 = !git lg3-specific --all
   lg1-specific = log  --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(cyan)- %an%C(reset)%C(auto)%d%C(reset)'
+  lg1b-specific = log  --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ai)%C(reset) %C(white)%s%C(reset) %C(cyan)- %an%C(reset)%C(auto)%d%C(reset)'
   lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
   lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
 
@@ -723,9 +736,6 @@
   #   $ git graphviz --first-parent master | dotty /dev/stdin
   graphviz = !"f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
 
-  # Serve the local directory by starting a git server daemon, so others can pull/push from my machine
-  serve = "-c daemon.receivepack=true daemon --base-path=. --export-all --reuseaddr --verbose"
-
   ##########################################################################
 
   ##
@@ -772,6 +782,14 @@
   ush = push
 
 [credential]
-	helper = store
+  helper = store
 [init]
-	defaultBranch = main
+  defaultBranch = main
+[color]
+  ui = auto
+[diff]
+  algorithm = histogram
+  colorMoved = default
+
+[merge]
+  conflictStyle = zdiff3
