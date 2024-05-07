@@ -160,6 +160,12 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+is_command() {
+    command -v $1 \
+    && echo true \
+    || echo false
+}
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -191,10 +197,12 @@ else
 fi
 
 # FZF ---------------------------------------------------
-if [[ -x /usr/bin/fzf ]]; then
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+if [[ $(is_command fzf) ]]; then
     # Keybinding and fuzzy auto completion
-    source /usr/share/doc/fzf/examples/key-bindings.bash
-    source /usr/share/doc/fzf/examples/completion.bash
+    # source /usr/share/doc/fzf/examples/key-bindings.bash
+    # source /usr/share/doc/fzf/examples/completion.bash
     # export FZF_DEFAULT_COMMAND='fd --type f'
     # Use fd (https://github.com/sharkdp/fd) instead of the default find
     # command for listing path candidates.
