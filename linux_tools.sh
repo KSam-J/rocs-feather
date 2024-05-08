@@ -77,7 +77,6 @@ elif [[ -n "${1}" ]]; then
 elif [[ ${pInstallAll} == true ]]; then
     ${SUDO} apt-get update
     ${SUDO} apt-get install -y ${PACKAGES_BASE[@]} ${PACKAGES_HANDY} ${PACKAGES_DOCKER} ${PACKAGES_ALACRITTY}
-    ${SUDO} rm -rf /var/lib/apt/lists/*
 
 else
     echo "PANIC PANIC PANIC"
