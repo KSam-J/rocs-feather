@@ -1,25 +1,30 @@
 #!/bin/bash
 
+# Check that the font family doesn't already exist
+fc-list | grep -q Caskaydia && { echo "font Caskaydia already installed"; exit 0; }
+
 LOCAL_FONTS="${HOME}/.local/share/fonts/"
 
-curl -L -O https://github.com/microsoft/cascadia-code/releases/download/v2009.22/CascadiaCode-2009.22.zip
+curl -L -O https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/CascadiaCode.zip
 
-unzip CascadiaCode-2009.22.zip -d CascadiaCode-2009_22
+unzip CascadiaCode.zip -d CascadiaCode
 
 # Check font directory and mv ttf
 if [[ ! -d "${LOCAL_FONTS}" ]]; then
 	mkdir ${LOCAL_FONTS}
 fi
 
-if [[  -e "CascadiaCode.ttf" ]]; then
-        echo "CascadiaCode.ttf already present"
-	exit 1
-fi
-
-cp CascadiaCode-2009_22/ttf/CascadiaCode.ttf ${LOCAL_FONTS}
+# OUTDATED, replace?
+# if [[  -e "CascadiaCode.ttf" ]]; then
+#         echo "CascadiaCode.ttf already present"
+# 	exit 1
+# fi
+ 
+mv CascadiaCode ${LOCAL_FONTS}
 
 # Clear and regenerate the font cache
 fc-cache -f -v
 
 # Verify installation
-fc-list | grep -q Cascadia && echo "CascadiaCode installed."
+fc-list | grep -q Caskaydia && echo "CaskaydiaCode installed."
+
