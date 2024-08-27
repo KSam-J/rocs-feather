@@ -1,2 +1,4 @@
 bat
 du-dust
+fd-find
+bottom
