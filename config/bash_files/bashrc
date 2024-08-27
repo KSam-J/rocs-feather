@@ -245,6 +245,7 @@ fi
 # BAT Manpager ----------------------------------------
 if [[ -x /usr/bin/bat || -x ~/.cargo/bin/bat ]]; then
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+    export MANROFFOPT="-c"
 else
     echo 'Bat not installed, manpager is boring'
 fi
