@@ -3,3 +3,4 @@ require('feather.core')
  
 -- Load lazy
 require('feather.lazy')
+
