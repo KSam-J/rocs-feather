@@ -292,15 +292,25 @@ if [[ -e ~/.rbenv/bin/rbenv ]]; then
     eval "$(~/.rbenv/bin/rbenv init - bash)"
 fi
 
-# PYENV
+# Pyenv
 if [[ -x /usr/bin/pyenv ]]; then
     export PATH="$HOME/.pyenv/bin:$PATH"
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
 fi
-. "$HOME/.cargo/env"
 
+# Cargo (Rust)
+. "$HOME/.cargo/env"
 
 batman() {
     ${1} --help | bat -l man -p
 }
+
+# pipx
+if [[ $(is_command pipx) ]]; then
+    export PATH="$PATH:$HOME/.local/bin"
+fi
+
+# Python
+export PIP_REQUIRE_VIRTUALENV=true
+
