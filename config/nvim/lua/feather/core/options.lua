@@ -72,10 +72,13 @@ end
 
 -- Create function and command for reloading a given module
 RELOAD = function(...)
-	return require("plenary.relaod").reload_module(...)
+	return require("plenary.reload").reload_module(...)
 end
 
 R = function(name)
 	RELOAD(name)
 	return require(name)
 end
+
+opt.mouse = ""
+
