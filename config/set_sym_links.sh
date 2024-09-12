@@ -9,10 +9,10 @@ ln -sir bash_files/bashrc ~/.bashrc
 ln -sir vim/.vimrc ~/.vimrc
 
 # alacritty
-if [[ ! -d ~/.config/alacritty ]]; then
-    mkdir ~/.config/alacritty
+if [[ -d ~/.config/alacritty ]]; then
+    rmdir ~/.config/alacritty
 fi
-ln -sir alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+ln -si alacritty/ ~/.config/alacritty
 
 # tmux
 ln -sir tmux/.tmux.conf ~/.tmux.conf
