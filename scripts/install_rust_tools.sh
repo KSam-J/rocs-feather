@@ -1,0 +1,1 @@
+cargo install $(cat rust-cli-tools.txt)
