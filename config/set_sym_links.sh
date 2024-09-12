@@ -21,3 +21,8 @@ ln -sir tmux/.tmux.conf ~/.tmux.conf
 ln -sir git_files/gitconfig ~/.gitconfig
 sudo ln -sir git_files/commit_w_jtag.sh /usr/bin/
 
+# nvim
+ln -sir nvim ~/.config/nvim
+
+# starship
+ln --symbolic --interactive --relative starship/starship.toml ~/.config/
