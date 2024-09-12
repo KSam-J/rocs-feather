@@ -14,14 +14,14 @@ PACKAGES_BASE=(
     gcc         # GNU project C and C++ compiler
     make        # GNU utility to maintain groups of programs
     git         # version control
-    git-delta   # Better diff view
     smbclient   # ftp-like client to access SMB/CIFS resources
     moreutils   # additional Unix utilities (errno, ...)
     curl        # Used by many installer scripts to pull from the web
+    openconnect # vpn access
+    net-tools   # ifconfig!!
 )
 
 PACKAGES_GUI=(
-    terminator
 )
 
 PACKAGES_HANDY=(
@@ -76,7 +76,7 @@ elif [[ -n "${1}" ]]; then
 
 elif [[ ${pInstallAll} == true ]]; then
     ${SUDO} apt-get update
-    ${SUDO} apt-get install -y ${PACKAGES_BASE[@]} ${PACKAGES_HANDY} ${PACKAGES_DOCKER} ${PACKAGES_ALACRITTY}
+    ${SUDO} apt-get install -y ${PACKAGES_BASE[@]} ${PACKAGES_HANDY[@]} ${PACKAGES_DOCKER[@]} ${PACKAGES_ALACRITTY[@]}
 
 else
     echo "PANIC PANIC PANIC"
