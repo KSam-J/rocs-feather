@@ -6,3 +6,4 @@ tealdeer
 ripgrep
 lsd
 git-delta
+starship
