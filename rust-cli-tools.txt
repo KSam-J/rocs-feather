@@ -2,3 +2,7 @@ bat
 du-dust
 fd-find
 bottom
+tealdeer
+ripgrep
+lsd
+git-delta
