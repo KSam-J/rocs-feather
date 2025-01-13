@@ -45,3 +45,9 @@ else
         --preserve-env=SSH_AUTH_SOCK \
         "$@"
 fi
+
+# Run the rocs_feather setup_script
+if [[ -x /rocs_feather/scripts/setup_all.sh ]]; then
+    /rocs_feather/scripts/setup_all.sh
+fi
+
