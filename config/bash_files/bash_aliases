@@ -147,6 +147,7 @@ alias cubeprog='~/STM32Cube/STM32CubeProgrammer/bin/STM32_Programmer_CLI'
 alias ikinscreen='cd /home/samkel/DevFiles/IKIN/stm_ws/screen_g474'
 alias ikincase='cd /home/samkel/DevFiles/IKIN/stm_ws/stm_drop'
 # Benchmark
+alias frame='cd ~/Bench/Benchbot/ros2-framework'
 alias wee='cd /home/samkel/Bench/Wee_Heavy/liveware-problem/backup/docker_backup'
 # Caterpillar
 alias cpillar='cd /home/samkel/Bench/Caterpillar'
@@ -159,3 +160,7 @@ alias ldock='cd ~/Bench/Lynntech/docker-yocto-build'
 alias motormux='~/Automation/pandoras-box/tmux_motor.sh'
 alias lbuild='/home/samkel/Bench/Lynntech/repos/motor-control-firmware/scripts/build.sh'
 alias gdbpy='~/Automation/pandoras-box/gdbpy.sh'
+
+# Benchbot
+alias sdkmanager='docker run -it --rm --privileged -v ./:/configdir -v /dev/bus/usb:/dev/bus/usb/ -v /dev:/dev -v /media/$USER:/media/nvidia:slave sdkmanager'
+
