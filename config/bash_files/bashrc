@@ -320,3 +320,22 @@ fi
 # Python
 export PIP_REQUIRE_VIRTUALENV=true
 
+# ROS2
+if [[ -s /opt/ros/humble/setup.bash ]]; then
+    source /opt/ros/humble/setup.bash
+fi
+
+# Starship
+if [[ $(is_command starship) ]]; then
+    eval "$(starship init bash)"
+fi
+
+# Zoxide
+if [[ $(is_command zoxide) ]]; then
+    eval "$(zoxide init bash)"
+fi
+
+# NVM is node.js, used by neo-vim
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
