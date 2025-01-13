@@ -243,6 +243,8 @@ else
 fi
 
 # ROCS-FEATHER -----------------------------------------
+ROCS_PATH="/home/samkel/Repos/rocs-feather"
+
 if [[ -n ${ROCS_PATH} ]]; then
     export PATH="${PATH}:${ROCS_PATH}/bin"
 fi
@@ -254,8 +256,6 @@ if [[ -x /usr/bin/bat || -x ~/.cargo/bin/bat ]]; then
 else
     echo 'Bat not installed, manpager is boring'
 fi
-
-# UNTRACKED --------------------------------------------
 
 # Number Conversion Functions
 # Hex to binary function
@@ -286,8 +286,6 @@ d2h() {
 h2d() {
     echo 'ibase=16;'${1^^} | bc
 }
-
-ROCS_PATH="/home/samkel/Repos/rocs-feather"
 
 if [[ -x /usr/bin/thefuck ]]; then
     eval "$(thefuck --alias)"
