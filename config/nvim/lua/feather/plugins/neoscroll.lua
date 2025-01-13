@@ -21,6 +21,6 @@ return {
         t['<PageDown>'] = {'scroll', { 'vim.wo.scroll', 'true', '150'}}
         t['zz'] = {'zz', {'150'}}
 
-        require('neoscroll.config').set_mappings(t)
+        -- require('neoscroll.config').set_mappings(t)
     end
 }
