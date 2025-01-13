@@ -55,7 +55,8 @@
 # cursor = "#d8dee9"
 # text = "#2e3440"
 
-import = ["~/.config/alacritty/aura-theme.toml"]
+# import = ["~/.config/alacritty/aura-theme.toml"]
+ import = ["~/.config/alacritty/kanagawa.toml"]
 
 [font.bold]
 family = "CaskaydiaCoveNerdFont"
