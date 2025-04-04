@@ -2,7 +2,7 @@
 
 ONE_LINER="${1}"
 
-J_TAG_REGEX='^[A-Z]{1,5}-\d{1,4}'
+J_TAG_REGEX='^[A-Z0-9]{1,5}-\d{1,4}'
 
 # Get the Jira Tag from the branch name
 J_TAG=$(git branch --show-current | grep --perl-regexp --only-matching "${J_TAG_REGEX}")
