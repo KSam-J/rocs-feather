@@ -42,6 +42,11 @@ alias updoot='sudo apt update && sudo apt upgrade'
 alias kompendium='cd ~/journal/Kompendium'
 alias rosup='source /opt/ros/foxy/setup.bash && export ROS_DOMAIN_ID=67'
 
+function cdl {
+    cd "${1}"
+    lsd --classify --group-directories-first
+}
+
 
 # Set the current Wallpaper to be spanned across multiple displays
 #alias spanthewall="gsettings set org.gnome.desktop.background picture-options spanned"
