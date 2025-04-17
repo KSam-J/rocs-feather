@@ -6,10 +6,12 @@ if [[ ! -d ~/.config ]]; then
     mkdir ~/.config
 fi
 
+config_dir="$(pwd)"
+
 # bash files
-ln -sif bash_files/bash_aliases ~/.bash_aliases
-ln -sif bash_files/bash_profile ~/.bash_profile
-ln -sif bash_files/bashrc ~/.bashrc
+ln -sif $config_dir/bash_files/bash_aliases ~/.bash_aliases
+ln -sif $config_dir/bash_files/bash_profile ~/.bash_profile
+ln -sif $config_dir/bash_files/bashrc ~/.bashrc
 
 # vim
 ln -sif vim/.vimrc ~/.vimrc
