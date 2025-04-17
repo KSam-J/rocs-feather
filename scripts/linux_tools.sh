@@ -19,6 +19,8 @@ PACKAGES_BASE=(
     curl        # Used by many installer scripts to pull from the web
     openconnect # vpn access
     net-tools   # ifconfig!!
+    keyutils    # required for mounting bench drives
+    cifs-utils  # ''
 )
 
 PACKAGES_GUI=(
