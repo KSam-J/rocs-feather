@@ -337,3 +337,21 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# CD-MARK functionality -------------------------------------------------
+# Function to mark the current directory
+cdmrk() {
+    export CD_MARK="$PWD"
+    echo "Directory marked: $CD_MARK"
+}
+
+# Function to return to the marked directory
+cdreturn() {
+    if [ -n "$CD_MARK" ]; then
+        cd "$CD_MARK" || echo "Failed to return to marked directory."
+    else
+        echo "No directory marked. Use 'cdmrk' to mark one."
+    fi
+}
+# END CD-MARK
+
