@@ -30,6 +30,9 @@ shopt -s checkwinsize
 # Save history from all panes
 PROMPT_COMMAND="history -a"
 
+# Stop CTRL-S from functioning. Flow Control is outdated.
+stty -ixon
+
 # -------------------------------------------------------
 #
 # If set, the pattern "**" used in a pathname expansion context will
