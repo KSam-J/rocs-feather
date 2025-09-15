@@ -1,5 +1,14 @@
 # ~/.bash_aliases: executed by ~/.bashrc
 # Defines user aliases
+is_command() {
+    command -v $1 \
+        && echo true \
+        || echo false
+    }
+VIM="vim"
+if [[ $(is_command nvim) ]]; then
+    VIM="nvim"
+fi
 
 alias vpn='sudo openconnect --protocol=gp --user=$USER secureconnect.bench.com/ssl-vpn'
 alias tvpn='tmux a -t vpn || tmux new -As vpn'
@@ -18,8 +27,8 @@ alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
 alias rebash='. ~/.bashrc'
-alias abashedit='vim ~/.bash_aliases'
-alias vnotes='vim ~/journal/Kompendium/notes'
+alias abashedit='$VIM ~/.bash_aliases'
+alias vnotes='$VIM ~/journal/Kompendium/notes'
 alias wttr='~/Automation/pandoras-box/wttrin.sh'
 alias post='cd /home/samkel/postbox'
 alias decompress='/home/samkel/Automation/decompress.sh'
