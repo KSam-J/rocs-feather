@@ -84,3 +84,41 @@ opt.mouse = ""
 
 -- Required by nvim auto-session
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
+-- StatusLine + Unscrollbar
+do
+  local g = vim.g.progressbar or {}
+  local BAR_WIDTH  = math.max(1, tonumber(g.width) or 10)
+  local CHAR_FULL  = type(g.full) == "string" and g.full or "█"
+  local CHAR_EMPTY = type(g.empty) == "string" and g.empty or "░"
+  local SHOW_EDGES = g.show_edges ~= false
+
+  _G.nvim_progressbar = function()
+    local curr  = vim.api.nvim_win_get_cursor(0)[1]
+    local total = vim.api.nvim_buf_line_count(0)
+    if total <= 1 then
+      return string.rep(CHAR_EMPTY, BAR_WIDTH)
+    end
+    local ratio  = curr / total
+    local filled = math.max(0, math.min(BAR_WIDTH, math.floor(ratio * BAR_WIDTH + 0.5)))
+    local empty  = BAR_WIDTH - filled
+    local bar = string.rep(CHAR_FULL, filled) .. string.rep(CHAR_EMPTY, empty)
+    if SHOW_EDGES then
+      if curr == 1 then
+        bar = "󰘣" .. string.rep(CHAR_EMPTY, math.max(0, BAR_WIDTH - 1))
+      elseif curr >= total then
+        bar = string.rep(CHAR_FULL, math.max(0, BAR_WIDTH - 1)) .. "󰘡"
+      end
+    end
+    return bar
+  end
+
+  -- Left: filename + modified flag
+  -- Right: the progress bar
+  vim.o.statusline = table.concat({
+    "%f", " %m", -- file + modified
+    "%=",        -- right align from here
+    "Ln %l, Col %c ", -- keep explicit line/column numbers
+    "%{v:lua.nvim_progressbar()}",
+  })
+end
