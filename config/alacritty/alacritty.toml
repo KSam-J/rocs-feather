@@ -1,4 +1,27 @@
 
+[font.bold]
+family = "CaskaydiaCoveNerdFont"
+style = "Bold"
+
+[font.bold_italic]
+family = "CaskaydiaCoveNerdFont"
+style = "BoldItalic"
+
+[font.italic]
+family = "CaskaydiaCoveNerdFont"
+style = "Italic"
+
+[font.normal]
+family = "CaskaydiaCoveNerdFont"
+style = "Regular"
+
+[window]
+decorations = "None"
+opacity = 1 
+blur = true
+
+[general]
+
 
 # [colors.bright]
 # black = "#4c566a"
@@ -56,25 +79,6 @@
 # text = "#2e3440"
 
 # import = ["~/.config/alacritty/aura-theme.toml"]
- import = ["~/.config/alacritty/kanagawa.toml"]
-
-[font.bold]
-family = "CaskaydiaCoveNerdFont"
-style = "Bold"
-
-[font.bold_italic]
-family = "CaskaydiaCoveNerdFont"
-style = "BoldItalic"
-
-[font.italic]
-family = "CaskaydiaCoveNerdFont"
-style = "Italic"
-
-[font.normal]
-family = "CaskaydiaCoveNerdFont"
-style = "Regular"
-
-[window]
-decorations = "None"
-opacity = 1 
-blur = true
+#  import = ["~/.config/alacritty/kanagawa.toml"]
+import = ["~/.config/alacritty/themes/themes/gotham.toml"]
+# import = ["~/.config/alacritty/themes/themes/flexoki.toml"]
