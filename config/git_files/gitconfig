@@ -6,7 +6,7 @@
     sort = committerdate
 
 [core]
-    editor = vim
+    editor = nvim
     pager = delta
 [interactive]
     diffFilter = delta --color-only
