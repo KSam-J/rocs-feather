@@ -1,0 +1,20 @@
+theme = "neon-city"
+# theme = "base16_terminal"
+
+[editor]
+line-number = "relative"
+mouse = false
+rulers = [80]
+color-modes = true
+shell = ["bash", "-c"]
+
+# On-Save behavior
+trim-trailing-whitespace = true
+
+cursor-shape = { insert = "bar" }
+
+[keys.insert.j]
+k = "normal_mode"
+
+[keys.normal]
+b = ":sh git show --no-patch --format='%%h (%%an: %%ar): %%s' $(git blame -p %{buffer_name} -L%{cursor_line},+1 | head -1 | cut -d' ' -f1)"
