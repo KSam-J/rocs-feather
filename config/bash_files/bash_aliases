@@ -12,7 +12,7 @@ fi
 
 alias vpn='sudo openconnect --protocol=gp --user=$USER secureconnect.bench.com/ssl-vpn'
 alias tvpn='tmux a -t vpn || tmux new -As vpn'
-alias woodfall='~/Automation/pandoras-box/tmux_woodfall.sh'
+alias moonbase='~/Automation/pandoras-box/tmux_woodfall.sh'
 alias fortheWin="vboxmanage startvm BenchWin10"
 alias iarvm="vboxmanage startvm WindowsBenchmark"
 # Make ripgrep case insensitive, and search all files by default

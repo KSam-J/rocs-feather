@@ -80,5 +80,5 @@ blur = true
 
 # import = ["~/.config/alacritty/aura-theme.toml"]
 #  import = ["~/.config/alacritty/kanagawa.toml"]
-import = ["~/.config/alacritty/themes/themes/gotham.toml"]
-# import = ["~/.config/alacritty/themes/themes/flexoki.toml"]
+# import = ["~/.config/alacritty/themes/themes/gotham.toml"]
+import = ["~/.config/alacritty/grey.toml"]
