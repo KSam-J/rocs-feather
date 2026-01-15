@@ -1,7 +1,7 @@
 return {
     "williamboman/mason.nvim",
     dependencies = {
-        "williamboman/mason-lspconfig.nvim",
+        "mason-org/mason-lspconfig.nvim",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     config = function()
@@ -39,6 +39,7 @@ return {
                 'rust_analyzer',
                 'yamlls'
             },
+            automatic_enable = true, -- Mason-LSPConfig v2 auto-enables servers by default
         })
 
         mason_tool_installer.setup({
