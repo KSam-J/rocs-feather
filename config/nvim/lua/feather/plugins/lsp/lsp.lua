@@ -11,7 +11,7 @@ return {
 		local lspconfig = require("lspconfig")
 
 		-- import mason_lspconfig plugin
-		local mason_lspconfig = require("mason-lspconfig")
+		-- local mason_lspconfig = require("mason-lspconfig")
 
 		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -78,51 +78,51 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		mason_lspconfig.setup_handlers({
-			-- default handler for installed servers
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-			["lua_ls"] = function()
-				-- configure lua server (with special settings)
-				lspconfig["lua_ls"].setup({
-					capabilities = capabilities,
-                    settings = {
-                        Cmake = {
-                            filetypes = {"cmake", "CMakeLists.txt"},
-                        },
-						lua = {
-							-- make the language server recognize "vim" global
-							diagnostics = {
-								globals = { "vim" },
-							},
-							completion = {
-								callsnippet = "replace",
-							},
-						},
-					},
-				})
-			end,
-			["clangd"] = function()
-				-- configure clangd language server
-				lspconfig["clangd"].setup({
-					capabilities = capabilities,
-					filetypes = { "h", "hpp", "cpp", "c" },
-					cmd = {
-						"clangd",
-						"--background-index",
-						"--clang-tidy",
-						"--header-insertion=iwyu",
-						"--completion-style=detailed",
-						"--function-arg-placeholders",
-						"--fallback-style=llvm",
-						"--header-insertion=never",
-					},
-				})
-				keymap.set("n", "<leader>ao", ":ClangdSwitchSourceHeader<CR>", { desc = "Swap header/source C/C++" })
-			end,
-		})
+		-- mason_lspconfig.setup_handlers({
+		-- 	-- default handler for installed servers
+		-- 	function(server_name)
+		-- 		lspconfig[server_name].setup({
+		-- 			capabilities = capabilities,
+		-- 		})
+		-- 	end,
+		-- 	["lua_ls"] = function()
+		-- 		-- configure lua server (with special settings)
+		-- 		lspconfig["lua_ls"].setup({
+		-- 			capabilities = capabilities,
+		--                   settings = {
+		--                       Cmake = {
+		--                           filetypes = {"cmake", "CMakeLists.txt"},
+		--                       },
+		-- 				lua = {
+		-- 					-- make the language server recognize "vim" global
+		-- 					diagnostics = {
+		-- 						globals = { "vim" },
+		-- 					},
+		-- 					completion = {
+		-- 						callsnippet = "replace",
+		-- 					},
+		-- 				},
+		-- 			},
+		-- 		})
+		-- 	end,
+		-- 	["clangd"] = function()
+		-- 		-- configure clangd language server
+		-- 		lspconfig["clangd"].setup({
+		-- 			capabilities = capabilities,
+		-- 			filetypes = { "h", "hpp", "cpp", "c" },
+		-- 			cmd = {
+		-- 				"clangd",
+		-- 				"--background-index",
+		-- 				"--clang-tidy",
+		-- 				"--header-insertion=iwyu",
+		-- 				"--completion-style=detailed",
+		-- 				"--function-arg-placeholders",
+		-- 				"--fallback-style=llvm",
+		-- 				"--header-insertion=never",
+		-- 			},
+		-- 		})
+		-- 		keymap.set("n", "<leader>ao", ":ClangdSwitchSourceHeader<CR>", { desc = "Swap header/source C/C++" })
+		-- 	end,
+		-- })
 	end,
 }
