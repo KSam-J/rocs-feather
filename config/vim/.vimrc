@@ -61,6 +61,18 @@ set hlsearch
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
 
+
+" Use literal tabs in Makefiles
+:augroup MakefileTabs
+:  autocmd!
+  " When editing Makefiles, use real tabs and sane defaults
+:  autocmd FileType make setlocal noexpandtab tabstop=8 shiftwidth=8 softtabstop=0
+  " Ensure Tab inserts a real Tab even if plugins remap Tab for completion
+:  autocmd FileType make inoremap <buffer> <Tab> <Tab>
+  " Optional: show tabs visibly if you ever want to verify
+:  autocmd FileType make setlocal list listchars=tab:>-,trail:·
+:augroup END
+
 set background=dark
 
 " let g:badwolf_darkgutter = 1    " Make gutter darker than background
