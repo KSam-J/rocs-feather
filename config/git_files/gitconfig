@@ -66,6 +66,7 @@
   ### clean ###
   ### fetch ###
   fv = fetch -v
+  fa = fetch --all
   ### grep ###
 
   # grep with grouping of the output lines
