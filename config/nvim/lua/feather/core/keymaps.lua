@@ -19,6 +19,12 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tc", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+
+-- quickfix mods
+keymap.set ("n", "<Down>", "<cmd>cnext<CR>", { desc = "Go to next quickfix item"}) -- got to next quickfix item
+keymap.set ("n", "<Up>", "<cmd>cprev<CR>", { desc = "Go to previous quickfix item"}) -- got to previous quickfix item
+
+
 -- local wk = require("which-key")
 -- wk.add({
 --   { "<leader>f", group = "fuzzy-find" }, -- group
