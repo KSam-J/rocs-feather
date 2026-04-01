@@ -12,7 +12,7 @@ yellow = "#D0A215"
 
 [colors.cursor]
 cursor = "#100F0F"
-text = "#100F0F"
+text = "#ececec"
 
 [colors.dim]
 # black = "#100F0F"
