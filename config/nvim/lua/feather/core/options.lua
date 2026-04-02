@@ -122,3 +122,7 @@ do
     "%{v:lua.nvim_progressbar()}",
   })
 end
+
+-- Ignore '--' in build output from :make
+-- vim.opt.errorformat:prepend("%-G-- %m") -- gives E377!
+vim.cmd([[set errorformat^=%-G--\ %m]])
