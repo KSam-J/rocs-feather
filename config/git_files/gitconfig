@@ -417,6 +417,19 @@
 
   ### WORKFLOW ALIASES ###
 
+  # From https://piechowski.io/post/git-commands-before-reading-code/
+  # Get the top 20 most changed files in the past year
+  most-changed = !"git log --format=format: --name-only --since=\"1 year ago\" | sort | uniq -c | sort -nr | head -20"
+
+  # Get a sorted list of who has the most contributions
+  builders = !"git shortlog -sn --no-merges"
+
+  # Sorted listed of files that have commits towards "bugs" or problematic code
+  most-buggy = !"git log -i -E --grep=\"fix|bug|broken\" --name-only --format='' | sort | uniq -c | sort -nr | head -20"
+
+  # Get the velocity of commits by month
+  velocity = !"git log --format='%ad' --date=format:'%Y-%m' | sort | uniq -c"
+
   # Clone a git repository including all submodules
   cloner = clone --recursive
 
