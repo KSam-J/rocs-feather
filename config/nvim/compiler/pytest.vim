@@ -33,14 +33,16 @@ CompilerSet makeprg=uv\ run\ pytest\ 2>&1\ \|\ tee\ quickfix.txt
 "   timeblob.py:37: TypeError               <- file/line that ends the block
 "
 " %E   starts multi-line match, captures message from the 'E   ...' line
-" %-G  suppresses 'file:line: in funcname' traceback frames before %Z sees them
-" %Z   ends the block, captures file and line number
+" %-G  suppresses 'file:line: in funcname' traceback frames (stray frames)
+" %-G  suppresses bare 'file:line:' call-site lines with no error type after ':'
+" %Z   ends the block on 'file:line: ErrorType' (has content after the space)
 " %C   absorbs all other continuation lines (blank lines, source context, etc.)
 " %-G  suppresses everything else
 
 CompilerSet errorformat=
       \%EE%*\\s%m,
       \%-G%f:%l:\ in\ %.%#,
-      \%Z%f:%l:\ ,
+      \%-G%f:%l:%*\\s,
+      \%Z%f:%l:\ %m,
       \%C%.%#,
       \%-G%.%#
