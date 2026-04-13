@@ -1,0 +1,65 @@
+# Name: Starfield
+# Variant: Dark
+# Description: A dark complement to starfield_light. Same bold accent palette,
+#              deep-grey neutrals, and per-accent fg selection for legible tab labels.
+
+# --- Starfield Palette ---
+sf_red="#c72138"
+sf_orange="#e06236"
+sf_yellow="#d7a64b"
+sf_blue="#304c7a"
+sf_purple="#6522a5"
+
+# --- Dark Neutral Base ---
+sf_bg_deep="#12121a"     # status bar — deepest surface, recedes behind panes
+sf_bg="#1e1e2c"          # terminal / pane background
+sf_border="#5a5a7a"      # inactive pane separator  (~2.5:1 on sf_bg)
+sf_text="#d8d4c8"        # primary text             (~11:1  on sf_bg)
+sf_text_dim="#787088"    # secondary / inactive text (~3.5:1 on sf_bg)
+
+# --- Semantic Roles ---
+color_bg=$sf_bg_deep
+color_fg=$sf_text
+color_fg_dim=$sf_text_dim
+
+# fg on accent backgrounds — chosen per accent luminance for maximum legibility:
+#   red  (#c72138, lum 0.14): sf_text  → 3.8:1 bold ✓
+#   orange (#e06236, lum 0.25): sf_bg  → 4.9:1      ✓
+#   yellow (#d7a64b, lum 0.43): sf_bg  → 7.7:1      ✓
+#   blue (#304c7a,  lum 0.07): sf_text  → 5.9:1     ✓
+sf_fg_on_dark_accent=$sf_text    # for red and blue
+sf_fg_on_bright_accent=$sf_bg    # for orange and yellow
+
+# ── Modes ─────────────────────────────────────────────────────────────────────
+setw -g mode-style "fg=$sf_bg,bg=$sf_yellow,bold"
+
+# ── Panes ─────────────────────────────────────────────────────────────────────
+set -g pane-border-style        "fg=$sf_border,bg=$sf_bg"
+set -g pane-active-border-style "fg=$sf_orange,bg=$sf_bg"
+set -g window-style             "bg=$sf_bg"
+
+# ── Status Bar ────────────────────────────────────────────────────────────────
+set -g status-position     bottom
+set -g status-justify      left
+set -g status-style        "bg=$color_bg,fg=$color_fg,dim"
+set -g status-left-length  20
+set -g status-right-length 90
+
+set -g status-left "#[fg=$sf_text][#S]"
+
+set -g  status-right "#[fg=$sf_text,bg=$sf_red] #(uv --directory /home/samkel/Automation/daylog run /home/samkel/Automation/daylog/daysum.py -x --filled '$sf_red' --empty '$sf_bg_deep')#[fg=$sf_text,bg=$sf_red] "
+set -ga status-right "#[fg=$sf_bg,bg=$sf_orange] #(ping -c 1 inside >/dev/null && echo BENCHNET || ip addr show | awk '/inet.*brd/{print \$NF; exit}') "
+set -ga status-right "#[fg=$sf_bg,bg=$sf_yellow] %m/%d/%y "
+set -ga status-right "#[fg=$sf_text,bg=$sf_blue] %H:%M:%S "
+
+# ── Window Status (inactive) ──────────────────────────────────────────────────
+setw -g window-status-format     " #[fg=$sf_text_dim]#I:#W#F "
+setw -g window-status-bell-style "fg=$sf_text,bg=$sf_red,bold"
+
+# ── Window Status (active) ────────────────────────────────────────────────────
+# bg cycles by window_index mod 4: 0=red  1=orange  2=yellow  3=blue
+# fg adapts per accent: dark accents (red/blue) → sf_text; bright (orange/yellow) → sf_bg
+setw -g window-status-current-format " #[bold,fg=#{?#{==:#{e|%|:#{window_index},4},0},$sf_fg_on_dark_accent,#{?#{==:#{e|%|:#{window_index},4},1},$sf_fg_on_bright_accent,#{?#{==:#{e|%|:#{window_index},4},2},$sf_fg_on_bright_accent,$sf_fg_on_dark_accent}}},bg=#{?#{==:#{e|%|:#{window_index},4},0},$sf_red,#{?#{==:#{e|%|:#{window_index},4},1},$sf_orange,#{?#{==:#{e|%|:#{window_index},4},2},$sf_yellow,$sf_blue}}}]#I:#W#F "
+
+# ── Messages ──────────────────────────────────────────────────────────────────
+set -g message-style "fg=$sf_bg,bg=$sf_yellow,bold"
