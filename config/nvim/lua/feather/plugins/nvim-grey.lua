@@ -1,5 +1,4 @@
 return {
-    {
     'yorickpeterse/nvim-grey',
     lazy = false,
     config = function()
@@ -22,6 +21,5 @@ return {
             vim.api.nvim_set_hl(0, sign, { fg = git_change, bold = true })
         end
     end,
-},
 
 }

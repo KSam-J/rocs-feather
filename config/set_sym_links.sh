@@ -24,6 +24,9 @@ ln -sif alacritty/ ~/.config/alacritty
 
 # tmux
 ln -sif tmux/.tmux.conf ~/.tmux.conf
+mkdir -p ~/.config/tmux
+ln -sif $config_dir/tmux/starfield_light.tmuxtheme ~/.config/tmux/starfield_light.tmuxtheme
+ln -sif $config_dir/tmux/starfield_dark.tmuxtheme ~/.config/tmux/starfield_dark.tmuxtheme
 
 # git
 ln -sif git_files/gitconfig ~/.gitconfig
