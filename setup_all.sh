@@ -16,12 +16,12 @@ cd ..
 config/bash_files/case-insensitive.sh
 
 # Install Rust
-if [[ ! $(is_command rustc) ]]; then
+if [[ $(is_command rustc) == "false" ]]; then
     ./scripts/install_rust.sh
 fi
 
 # Install Rust Tools
-if [[ $(is_command cargo) ]]; then
-    ./scripts/install_rust_tools.sh
+if [[ $(is_command cargo) == "true" ]]; then
+    bash ./scripts/install_rust_tools.sh
 fi
 

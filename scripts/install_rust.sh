@@ -2,6 +2,6 @@
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/rust_installer.sh
 
-sudo chmod +x /tmp/rust_installer
+sudo chmod +x /tmp/rust_installer.sh
 /tmp/rust_installer.sh --no-modify-path
 
