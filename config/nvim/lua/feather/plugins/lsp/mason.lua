@@ -39,7 +39,7 @@ return {
                 'rust_analyzer',
                 'yamlls'
             },
-            automatic_enable = true, -- Mason-LSPConfig v2 auto-enables servers by default
+            automatic_enable = true,
         })
 
         mason_tool_installer.setup({
