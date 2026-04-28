@@ -1,6 +1,6 @@
 [colors.bright]
 # black = "#100F0F"
-black = "#ececec" # white
+black = "#757575" # dimmed text (visible on #ececec pane bg)
 blue = "#4385BE"
 cyan = "#3AA99F"
 green = "#879A39"
@@ -16,7 +16,7 @@ text = "#ececec"
 
 [colors.dim]
 # black = "#100F0F"
-black = "#ececec" # white
+black = "#757575" # dimmed text (visible on #ececec pane bg)
 blue = "#4385BE"
 cyan = "#3AA99F"
 green = "#879A39"
@@ -28,7 +28,7 @@ yellow = "#D0A215"
 
 [colors.normal]
 # black = "#100F0F"
-black = "#ececec" # white
+black = "#757575" # dimmed text (visible on #ececec pane bg)
 blue = "#4385BE"
 cyan = "#3AA99F"
 green = "#879A39"
