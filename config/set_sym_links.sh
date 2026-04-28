@@ -24,9 +24,12 @@ ln -sif alacritty/ ~/.config/alacritty
 
 # tmux
 ln -sif tmux/.tmux.conf ~/.tmux.conf
-mkdir -p ~/.config/tmux
-ln -sif $config_dir/tmux/starfield_light.tmuxtheme ~/.config/tmux/starfield_light.tmuxtheme
-ln -sif $config_dir/tmux/starfield_dark.tmuxtheme ~/.config/tmux/starfield_dark.tmuxtheme
+# Symlink the whole tmux config dir so all theme files are accessible.
+# current.tmuxtheme is a relative symlink inside the dir managed by floppy-trigger.
+if [[ -d ~/.config/tmux && ! -L ~/.config/tmux ]]; then
+    mv ~/.config/tmux ~/.config/tmux.old
+fi
+ln -sif $config_dir/tmux/ ~/.config/tmux
 
 # git
 ln -sif git_files/gitconfig ~/.gitconfig
