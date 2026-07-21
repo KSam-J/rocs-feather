@@ -39,8 +39,7 @@ white = "#100F0F" #black
 yellow = "#D0A215"
 
 [colors.primary]
-# background = "#ececec"
-background = "#b3b3b3"
+background = "#ececec"
 bright_foreground = "#100F0F"
 dim_foreground = "#100F0F"
 foreground = "#100F0F"
