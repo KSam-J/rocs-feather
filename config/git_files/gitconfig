@@ -46,6 +46,7 @@
   ### commit ###
   cm = !commit_w_jtag.sh
   cn = commit --message
+  cd = "!f() { git commit -m \"$(date)\"; }; f"
   ### checkout ###
   tr = checkout --track
   ### cherry-pick ###
