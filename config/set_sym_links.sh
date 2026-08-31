@@ -48,3 +48,9 @@ fi
 
 ln --symbolic --interactive --force --relative fish ~/.config/
 
+# zellij
+if [[ -d ~/.config/zellij && ! -L ~/.config/zellij ]]; then
+    mv ~/.config/zellij ~/.config/zellij.old
+fi
+ln -sif $config_dir/zellij/ ~/.config/zellij
+
