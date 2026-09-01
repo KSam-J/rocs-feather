@@ -1,0 +1,10 @@
+# 99-theme-usb.rules
+# Udev rule: trigger a theme change when a labeled USB drive is inserted.
+#
+# Install with install-udev.sh or manually:
+#   sudo cp 99-theme-usb.rules /etc/udev/rules.d/
+#   sudo udevadm control --reload-rules
+
+ACTION=="add", SUBSYSTEM=="block", ENV{ID_FS_LABEL}!="", \
+  ENV{ID_BUS}=="usb", \
+  RUN+="/home/samkel/Repos/rocs-feather/floppy-trigger/trigger-usb.sh $env{DEVNAME}"
