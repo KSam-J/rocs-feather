@@ -18,5 +18,14 @@ alias l = if (is-installed lsd) {lsd --classify --group-directories-first} else 
 alias ll = if (is-installed lsd) {lsd --long --all} else {ls --all --long}
 alias la = if (is-installed lsd) {lsd --classify --group-directories-first --all} else {ls --all}
 
+alias dlog = /home/samkel/Automation/daylog/dlog.py
+alias tt = tree -L 2 
+alias ttt = tree -L 3 
+
+def updoot [] {
+  sudo apt update
+  sudo apt upgrade
+}
+
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
