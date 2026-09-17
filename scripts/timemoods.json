@@ -1,0 +1,100 @@
+{
+  "description": "Time-aware mood library for scripts/greeting.nu. Bands are matched by hour (0-23) where start <= hour < end. One message is chosen at random from the matching band.",
+  "fallback": {
+    "icon": "🪶",
+    "messages": ["Welcome back."]
+  },
+  "bands": [
+    {
+      "name": "witching",
+      "start": 0,
+      "end": 5,
+      "icon": "🌙",
+      "messages": [
+        "The witching hour. Commit nothing you can't defend.",
+        "Everything is broken at 3am. Including your judgement.",
+        "The bugs are nocturnal too.",
+        "Whatever you're debugging will look obvious after sleep.",
+        "Nobody is reviewing this branch until morning. Be kind to them."
+      ]
+    },
+    {
+      "name": "early",
+      "start": 5,
+      "end": 9,
+      "icon": "🌅",
+      "messages": [
+        "Early bird. The compiler is still waking up.",
+        "First light, first build. Make it a clean one.",
+        "The inbox hasn't found you yet. Use the head start.",
+        "Coffee compiling. Please stand by.",
+        "Quiet hours. The best code happens before the meetings."
+      ]
+    },
+    {
+      "name": "morning",
+      "start": 9,
+      "end": 12,
+      "icon": "☀️ ",
+      "messages": [
+        "Prime focus hours. Spend them wisely.",
+        "Peak brain. Point it at the hard problem.",
+        "Deep work window is open. Close the chat client.",
+        "The day is young and the stack traces are shallow.",
+        "Good hour for the refactor you've been avoiding."
+      ]
+    },
+    {
+      "name": "midday",
+      "start": 12,
+      "end": 14,
+      "icon": "🍽️ ",
+      "messages": [
+        "Midday. Fuel the meat hardware.",
+        "Step away from the keyboard. The tests will wait.",
+        "Lunch is a valid debugging strategy.",
+        "Half the day is spent. How's the diff looking?",
+        "Hydration check. Yes, really."
+      ]
+    },
+    {
+      "name": "afternoon",
+      "start": 14,
+      "end": 18,
+      "icon": "🌤️ ",
+      "messages": [
+        "Afternoon stretch. Ship something small.",
+        "Post-lunch dip. Pick the easy ticket.",
+        "Good time to write the docs you promised.",
+        "Merge something before the day gets away from you.",
+        "Slow burn hours. Steady beats clever."
+      ]
+    },
+    {
+      "name": "evening",
+      "start": 18,
+      "end": 22,
+      "icon": "🌆",
+      "messages": [
+        "Evening build. Tests before bed.",
+        "Wrap it up at a good commit boundary.",
+        "Leave yourself a note for tomorrow. You'll forget.",
+        "The side project hours begin.",
+        "Stash it, don't lose it."
+      ]
+    },
+    {
+      "name": "late",
+      "start": 22,
+      "end": 24,
+      "icon": "🌌",
+      "messages": [
+        "Late shift. Push to a branch, not to main.",
+        "No deploys after dark. You know the rule.",
+        "Diminishing returns are setting in.",
+        "One more commit, you said. Two hours ago.",
+        "Sleep resolves more bugs than caffeine."
+      ]
+    }
+  ]
+}

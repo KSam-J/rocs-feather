@@ -56,23 +56,23 @@ def detect-shell []: nothing -> string {
 
 # --- time flavor ----------------------------------------------------------
 
+# Path to the time-mood string library, resolved relative to this script.
+const TIMEMOODS_FILE = path self "timemoods.json"
+
 # Pick a mood based on the hour, because 03:00 deserves acknowledgement.
+# Bands and messages come from timemoods.json; a message is chosen at random.
 def time-mood [hour: int]: nothing -> record<icon: string, word: string> {
-    if $hour < 5 {
-        {icon: "🌙", word: "The witching hour. Commit nothing you can't defend."}
-    } else if $hour < 9 {
-        {icon: "🌅", word: "Early bird. The compiler is still waking up."}
-    } else if $hour < 12 {
-        {icon: "☀️ ", word: "Prime focus hours. Spend them wisely."}
-    } else if $hour < 14 {
-        {icon: "🍽️ ", word: "Midday. Fuel the meat hardware."}
-    } else if $hour < 18 {
-        {icon: "🌤️ ", word: "Afternoon stretch. Ship something small."}
-    } else if $hour < 22 {
-        {icon: "🌆", word: "Evening build. Tests before bed."}
-    } else {
-        {icon: "🌌", word: "Late shift. Push to a branch, not to main."}
-    }
+    let lib = (do -i { open $TIMEMOODS_FILE })
+    let fallback = {icon: "🪶", word: "Welcome back."}
+
+    if ($lib | is-empty) { return $fallback }
+
+    let band = ($lib.bands | where {|b| $hour >= $b.start and $hour < $b.end } | first)
+    let chosen = (if ($band | is-empty) { $lib | get -o fallback } else { $band })
+
+    if (($chosen | is-empty) or ($chosen.messages | is-empty)) { return $fallback }
+
+    {icon: $chosen.icon, word: ($chosen.messages | shuffle | first)}
 }
 
 # A 12-hour clock face emoji, rounded to the nearest half hour.
