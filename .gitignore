@@ -1,3 +1,4 @@
 **/safeE
 .venv/
 __pycache__/
+config/tmux/current.tmuxtheme
