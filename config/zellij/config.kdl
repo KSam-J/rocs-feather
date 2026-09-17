@@ -22,20 +22,13 @@ keybinds clear-defaults=false {
     }
 
     normal {
-        // --- Pane navigation (tmux: bind -n M-h/j/k/l select-pane) ---
-        bind "Alt h"  { MoveFocus "Left"; }
-        bind "Alt j"  { MoveFocus "Down"; }
-        bind "Alt k"  { MoveFocus "Up"; }
-        bind "Alt l"  { MoveFocus "Right"; }
-
         // Re-expose other default mode entries so the UI stays usable
-        bind "Ctrl Space" { SwitchToMode "tmux"; }
-        bind "Ctrl p"     { SwitchToMode "Pane"; }
+        bind "Ctrl ;"     { SwitchToMode "Pane"; }
         bind "Ctrl t"     { SwitchToMode "Tab"; }
-        bind "Ctrl n"     { SwitchToMode "Resize"; }
+        bind "Ctrl e"     { SwitchToMode "Resize"; }
         bind "Ctrl s"     { SwitchToMode "Scroll"; }
-        bind "Ctrl o"     { SwitchToMode "Session"; }
-        bind "Ctrl m"     { SwitchToMode "Move"; }
+        bind "Ctrl z"     { SwitchToMode "Session"; }
+        bind "Ctrl n"     { SwitchToMode "Move"; }
         
     }
 
@@ -59,10 +52,6 @@ keybinds clear-defaults=false {
     }
 
     pane {
-        // Return to normal
-        bind "Esc"        { SwitchToMode "Normal"; }
-        bind "Ctrl Space" { SwitchToMode "Tmux"; }
-
         // Split panes (tmux: prefix+v → split-window -h, prefix+h → split-window -v)
         // In tmux: -h = side-by-side (new pane to the Right), -v = stacked (new pane Down)
         bind "v" { NewPane "Right"; SwitchToMode "Normal"; }
@@ -83,7 +72,6 @@ keybinds clear-defaults=false {
 
     resize {
         bind "Ctrl n"     { SwitchToMode "Normal"; }
-        bind "Ctrl Space" { SwitchToMode "Tmux"; }
         bind "h" "Left"   { Resize "Increase Left"; }
         bind "j" "Down"   { Resize "Increase Down"; }
         bind "k" "Up"     { Resize "Increase Up"; }
@@ -98,7 +86,6 @@ keybinds clear-defaults=false {
 
     tab {
         bind "Ctrl t"               { SwitchToMode "Normal"; }
-        bind "Ctrl Space"           { SwitchToMode "Tmux"; }
         bind "r"                    { SwitchToMode "RenameTab"; TabNameInput 0; }
         bind "h" "Left" "Up"   "k"  { GoToPreviousTab; }
         bind "l" "Right" "Down" "j" { GoToNextTab; }
@@ -118,7 +105,6 @@ keybinds clear-defaults=false {
 
     scroll {
         bind "Ctrl s"                            { SwitchToMode "Normal"; }
-        bind "Ctrl Space"                        { SwitchToMode "Tmux"; }
         bind "Ctrl c"                            { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down"                          { ScrollDown; }
         bind "k" "Up"                            { ScrollUp; }
@@ -136,7 +122,6 @@ keybinds clear-defaults=false {
 
     search {
         bind "Ctrl s"                         { SwitchToMode "Normal"; }
-        bind "Ctrl Space"                     { SwitchToMode "Tmux"; }
         bind "Ctrl c"                         { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down"                       { ScrollDown; }
         bind "k" "Up"                         { ScrollUp; }
@@ -152,27 +137,28 @@ keybinds clear-defaults=false {
     }
 
     entersearch {
-        bind "Ctrl Space"   { SwitchToMode "Tmux"; }
         bind "Ctrl c" "Esc" { SwitchToMode "Scroll"; }
         bind "Enter"        { SwitchToMode "Search"; }
     }
 
     renametab {
-        bind "Ctrl Space" { SwitchToMode "Tmux"; }
         bind "Ctrl c"     { SwitchToMode "Normal"; }
         bind "Esc"        { UndoRenameTab; SwitchToMode "Tab"; }
     }
 
     renamepane {
-        bind "Ctrl Space" { SwitchToMode "Tmux"; }
         bind "Ctrl c"     { SwitchToMode "Normal"; }
         bind "Esc"        { UndoRenamePane; SwitchToMode "Pane"; }
     }
 
     session {
-        bind "Ctrl Space" { SwitchToMode "Tmux"; }
         bind "Ctrl o"     { SwitchToMode "Normal"; }
         bind "Ctrl s"     { SwitchToMode "Scroll"; }
         bind "d"          { Detach; }
+    }
+
+    shared_except "tmux" "locked" {
+        unbind "Ctrl b"
+        bind "Ctrl Space" { SwitchToMode "Tmux"; }
     }
 }
