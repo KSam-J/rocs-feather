@@ -16,8 +16,11 @@ copy_on_select true
 default_mode "normal"
 
 keybinds clear-defaults=false {
+        unbind " Ctrl g" // unbind in all modes
+
     locked {
         bind "Ctrl Space" { SwitchToMode "Normal"; }
+
         // --- Pane navigation (tmux: bind -n M-h/j/k/l select-pane) ---
         bind "Alt h"  { MoveFocus "Left"; }
         bind "Alt j"  { MoveFocus "Down"; }
@@ -38,22 +41,29 @@ keybinds clear-defaults=false {
         bind "n" {GoToNextTab; SwitchToMode "Locked";}
         bind "v" { NewPane "Right"; SwitchToMode "Locked"; }
         bind "h" { NewPane "Down";  SwitchToMode "Locked"; }
+        bind "c" {NewTab; SwitchToMode "Locked";}
 
         bind "f" {ToggleFloatingPanes; SwitchToMode "Locked";}
 
+        // Plugin - Zextract
+        bind "x" {LaunchOrFocusPlugin "file:///home/samkel/.config/zellij/plugins/zextract.wasm" {
+                  floating true;
+                 };
+            }
+
         // Re-expose other default mode entries so the UI stays usable
         bind "Ctrl Space" { SwitchToMode "Locked"; }
-        bind "Ctrl p" { SwitchToMode "Pane"; }
-        bind "Ctrl t" { SwitchToMode "Tab"; }
-        bind "Ctrl n" { SwitchToMode "Resize"; }
-        bind "Ctrl s" { SwitchToMode "Scroll"; }
-        bind "Ctrl o" { SwitchToMode "Session"; }
+        bind "Ctrl p"     { SwitchToMode "Pane"; }
+        bind "Ctrl t"     { SwitchToMode "Tab"; }
+        bind "Ctrl n"     { SwitchToMode "Resize"; }
+        bind "Ctrl s"     { SwitchToMode "Scroll"; }
+        bind "Ctrl o"     { SwitchToMode "Session"; }
         
     }
 
     pane {
         // Return to normal
-        bind "Esc" { SwitchToMode "Normal"; }
+        bind "Esc"        { SwitchToMode "Normal"; }
         bind "Ctrl Space" { SwitchToMode "Locked"; }
 
         // Split panes (tmux: prefix+v → split-window -h, prefix+h → split-window -v)
@@ -76,23 +86,23 @@ keybinds clear-defaults=false {
     }
 
     resize {
-        bind "Ctrl n" { SwitchToMode "Normal"; }
+        bind "Ctrl n"     { SwitchToMode "Normal"; }
         bind "Ctrl Space" { SwitchToMode "Locked"; }
-        bind "h" "Left"  { Resize "Increase Left"; }
-        bind "j" "Down"  { Resize "Increase Down"; }
-        bind "k" "Up"    { Resize "Increase Up"; }
-        bind "l" "Right" { Resize "Increase Right"; }
-        bind "H"         { Resize "Decrease Left"; }
-        bind "J"         { Resize "Decrease Down"; }
-        bind "K"         { Resize "Decrease Up"; }
-        bind "L"         { Resize "Decrease Right"; }
-        bind "=" "+"     { Resize "Increase"; }
-        bind "-"         { Resize "Decrease"; }
+        bind "h" "Left"   { Resize "Increase Left"; }
+        bind "j" "Down"   { Resize "Increase Down"; }
+        bind "k" "Up"     { Resize "Increase Up"; }
+        bind "l" "Right"  { Resize "Increase Right"; }
+        bind "H"          { Resize "Decrease Left"; }
+        bind "J"          { Resize "Decrease Down"; }
+        bind "K"          { Resize "Decrease Up"; }
+        bind "L"          { Resize "Decrease Right"; }
+        bind "=" "+"      { Resize "Increase"; }
+        bind "-"          { Resize "Decrease"; }
     }
 
     tab {
-        bind "Ctrl t" { SwitchToMode "Normal"; }
-        bind "Ctrl Space" { SwitchToMode "Locked"; }
+        bind "Ctrl t"               { SwitchToMode "Normal"; }
+        bind "Ctrl Space"           { SwitchToMode "Locked"; }
         bind "r"                    { SwitchToMode "RenameTab"; TabNameInput 0; }
         bind "h" "Left" "Up"   "k"  { GoToPreviousTab; }
         bind "l" "Right" "Down" "j" { GoToNextTab; }
@@ -111,13 +121,13 @@ keybinds clear-defaults=false {
     }
 
     scroll {
-        bind "Ctrl s"               { SwitchToMode "Normal"; }
-        bind "Ctrl Space" { SwitchToMode "Locked"; }
+        bind "Ctrl s"                            { SwitchToMode "Normal"; }
+        bind "Ctrl Space"                        { SwitchToMode "Locked"; }
         bind "Ctrl c"                            { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down"                          { ScrollDown; }
         bind "k" "Up"                            { ScrollUp; }
-        bind "Ctrl f" "PageDown" "Right" "l"    { PageScrollDown; }
-        bind "Ctrl b" "PageUp"   "Left"  "h"    { PageScrollUp; }
+        bind "Ctrl f" "PageDown" "Right" "l"     { PageScrollDown; }
+        bind "Ctrl b" "PageUp"   "Left"  "h"     { PageScrollUp; }
         bind "d"                                 { HalfPageScrollDown; }
         bind "u"                                 { HalfPageScrollUp; }
         bind "e"                                 { EditScrollback; SwitchToMode "Normal"; }
@@ -129,13 +139,13 @@ keybinds clear-defaults=false {
     }
 
     search {
-        bind "Ctrl s"            { SwitchToMode "Normal"; }
-        bind "Ctrl Space" { SwitchToMode "Locked"; }
+        bind "Ctrl s"                         { SwitchToMode "Normal"; }
+        bind "Ctrl Space"                     { SwitchToMode "Locked"; }
         bind "Ctrl c"                         { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down"                       { ScrollDown; }
         bind "k" "Up"                         { ScrollUp; }
-        bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
-        bind "Ctrl b" "PageUp"   "Left"  "h" { PageScrollUp; }
+        bind "Ctrl f" "PageDown" "Right" "l"  { PageScrollDown; }
+        bind "Ctrl b" "PageUp"   "Left"  "h"  { PageScrollUp; }
         bind "d"                              { HalfPageScrollDown; }
         bind "u"                              { HalfPageScrollUp; }
         bind "n"                              { Search "down"; }
@@ -146,27 +156,27 @@ keybinds clear-defaults=false {
     }
 
     entersearch {
-        bind "Ctrl Space" { SwitchToMode "Locked"; }
+        bind "Ctrl Space"   { SwitchToMode "Locked"; }
         bind "Ctrl c" "Esc" { SwitchToMode "Scroll"; }
         bind "Enter"        { SwitchToMode "Search"; }
     }
 
     renametab {
         bind "Ctrl Space" { SwitchToMode "Locked"; }
-        bind "Ctrl c" { SwitchToMode "Normal"; }
-        bind "Esc"    { UndoRenameTab; SwitchToMode "Tab"; }
+        bind "Ctrl c"     { SwitchToMode "Normal"; }
+        bind "Esc"        { UndoRenameTab; SwitchToMode "Tab"; }
     }
 
     renamepane {
         bind "Ctrl Space" { SwitchToMode "Locked"; }
-        bind "Ctrl c" { SwitchToMode "Normal"; }
-        bind "Esc"    { UndoRenamePane; SwitchToMode "Pane"; }
+        bind "Ctrl c"     { SwitchToMode "Normal"; }
+        bind "Esc"        { UndoRenamePane; SwitchToMode "Pane"; }
     }
 
     session {
         bind "Ctrl Space" { SwitchToMode "Locked"; }
-        bind "Ctrl o" { SwitchToMode "Normal"; }
-        bind "Ctrl s" { SwitchToMode "Scroll"; }
-        bind "d"      { Detach; }
+        bind "Ctrl o"     { SwitchToMode "Normal"; }
+        bind "Ctrl s"     { SwitchToMode "Scroll"; }
+        bind "d"          { Detach; }
     }
 }
