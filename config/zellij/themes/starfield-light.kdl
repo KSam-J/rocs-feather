@@ -1,0 +1,132 @@
+// Starfield Light — zellij theme
+// Translated from config/tmux/starfield-light.tmuxtheme
+//
+// Uses zellij's advanced named-style format so toolbar/ribbon text and
+// backgrounds can be set independently (the simpler palette format shares
+// slots across components and can't express this).
+//
+// Palette:
+//   sf_red     #c72138   sf_orange  #e06236
+//   sf_yellow  #d7a64b   sf_blue    #304c7a
+//   sf_purple  #6522a5
+//   sf_light   #ececec   sf_dark    #1a1a1a   sf_mid  #757575
+//
+// Ribbons: white text (#ececec) on the tmux status-bar grey (#757575, sf_mid).
+// Keep text_unselected background at sf_light so pane background stays light.
+// The selected ribbon keeps the sf_blue accent so the active mode stays distinguishable.
+
+themes {
+    starfield-light {
+        // --- Status bar / toolbar text ---
+        text_unselected {
+            base       "#1a1a1a"  // white text
+            background "#757575"  // sf_light; controls pane background via zellij palette bridge
+            emphasis_0 "#e06236"  // orange
+            emphasis_1 "#d7a64b"  // yellow
+            emphasis_2 "#304c7a"  // blue (was neon green)
+            emphasis_3 "#6522a5"  // purple
+        }
+        text_selected {
+            base       "#ececec"
+            background "#757575"
+            emphasis_0 "#e06236"
+            emphasis_1 "#d7a64b"
+            emphasis_2 "#304c7a"
+            emphasis_3 "#6522a5"
+        }
+
+        // --- Mode / tab ribbons ---
+        ribbon_unselected {
+            base       "#ececec"  // white text
+            background "#757575"  // sf_mid grey (was black)
+            emphasis_0 "#c72138"  // red
+            emphasis_1 "#d7a64b"  // yellow
+            emphasis_2 "#304c7a"  // blue
+            emphasis_3 "#6522a5"  // purple
+        }
+        ribbon_selected {
+            base       "#ececec"  // white text
+            background "#304c7a"  // sf_blue accent (active mode)
+            emphasis_0 "#c72138"  // red
+            emphasis_1 "#e06236"  // orange
+            emphasis_2 "#d7a64b"  // yellow
+            emphasis_3 "#ececec"  // light
+        }
+
+        // --- Tables (plugin UIs) ---
+        table_title {
+            base       "#304c7a"
+            background "#ececec"
+            emphasis_0 "#e06236"
+            emphasis_1 "#d7a64b"
+            emphasis_2 "#304c7a"
+            emphasis_3 "#6522a5"
+        }
+        table_cell_unselected {
+            base       "#1a1a1a"
+            background "#ececec"
+            emphasis_0 "#e06236"
+            emphasis_1 "#d7a64b"
+            emphasis_2 "#304c7a"
+            emphasis_3 "#6522a5"
+        }
+        table_cell_selected {
+            base       "#ececec"
+            background "#757575"
+            emphasis_0 "#e06236"
+            emphasis_1 "#d7a64b"
+            emphasis_2 "#304c7a"
+            emphasis_3 "#6522a5"
+        }
+
+        // --- Lists (plugin UIs) ---
+        list_unselected {
+            base       "#1a1a1a"
+            background "#ececec"
+            emphasis_0 "#e06236"
+            emphasis_1 "#d7a64b"
+            emphasis_2 "#304c7a"
+            emphasis_3 "#6522a5"
+        }
+        list_selected {
+            base       "#ececec"
+            background "#757575"
+            emphasis_0 "#e06236"
+            emphasis_1 "#d7a64b"
+            emphasis_2 "#304c7a"
+            emphasis_3 "#6522a5"
+        }
+
+        // --- Pane frames ---
+        frame_selected {
+            base       "#304c7a"  // sf_blue border (was neon green)
+            emphasis_0 "#e06236"
+            emphasis_1 "#d7a64b"
+            emphasis_2 "#6522a5"
+            emphasis_3 "#c72138"
+        }
+        frame_highlight {
+            base       "#e06236"
+            emphasis_0 "#6522a5"
+            emphasis_1 "#304c7a"
+            emphasis_2 "#e06236"
+            emphasis_3 "#e06236"
+        }
+
+        // --- Command exit codes ---
+        exit_code_success {
+            base       "#304c7a"  // sf_blue "ok" (was neon green)
+            emphasis_0 "#d7a64b"
+            emphasis_1 "#1a1a1a"
+            emphasis_2 "#6522a5"
+            emphasis_3 "#304c7a"
+        }
+        exit_code_error {
+            base       "#c72138"  // sf_red
+            emphasis_0 "#d7a64b"
+            emphasis_1 "#e06236"
+            emphasis_2 "#6522a5"
+            emphasis_3 "#304c7a"
+        }
+    }
+}
