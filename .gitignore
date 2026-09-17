@@ -1,1 +1,3 @@
 **/safeE
+.venv/
+__pycache__/
