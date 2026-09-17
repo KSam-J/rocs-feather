@@ -16,16 +16,9 @@ copy_on_select true
 default_mode "normal"
 
 keybinds clear-defaults=false {
-        unbind " Ctrl g" // unbind in all modes
 
     locked {
-        bind "Ctrl Space" { SwitchToMode "Normal"; }
-
-        // --- Pane navigation (tmux: bind -n M-h/j/k/l select-pane) ---
-        bind "Alt h"  { MoveFocus "Left"; }
-        bind "Alt j"  { MoveFocus "Down"; }
-        bind "Alt k"  { MoveFocus "Up"; }
-        bind "Alt l"  { MoveFocus "Right"; }
+        // Keep this clear...
     }
 
     normal {
@@ -35,36 +28,40 @@ keybinds clear-defaults=false {
         bind "Alt k"  { MoveFocus "Up"; }
         bind "Alt l"  { MoveFocus "Right"; }
 
-        // TMUX-like zoom, tab nav, pane-break
-        bind "z" {ToggleFocusFullscreen; SwitchToMode "Locked";}
-        bind "p" {GoToPreviousTab; SwitchToMode "Locked";}
-        bind "n" {GoToNextTab; SwitchToMode "Locked";}
-        bind "v" { NewPane "Right"; SwitchToMode "Locked"; }
-        bind "h" { NewPane "Down";  SwitchToMode "Locked"; }
-        bind "c" {NewTab; SwitchToMode "Locked";}
+        // Re-expose other default mode entries so the UI stays usable
+        bind "Ctrl Space" { SwitchToMode "tmux"; }
+        bind "Ctrl p"     { SwitchToMode "Pane"; }
+        bind "Ctrl t"     { SwitchToMode "Tab"; }
+        bind "Ctrl n"     { SwitchToMode "Resize"; }
+        bind "Ctrl s"     { SwitchToMode "Scroll"; }
+        bind "Ctrl o"     { SwitchToMode "Session"; }
+        bind "Ctrl m"     { SwitchToMode "Move"; }
+        
+    }
 
-        bind "f" {ToggleFloatingPanes; SwitchToMode "Locked";}
+    tmux {
+        unbind "Space" // NextSwapLayout
+        bind "Ctrl Space" { SwitchToMode "Normal"; }
+        // Rebind the pane splits
+        unbind "%" // newpane right
+        unbind "/" // newpane down
+        bind "v"       { NewPane "Right"; SwitchToMode "Normal"; }
+        bind "h"       { NewPane "Down";  SwitchToMode "Normal"; }
+
+        // Augments
+        bind "f" {ToggleFloatingPanes; SwitchToMode "Normal";}
 
         // Plugin - Zextract
         bind "x" {LaunchOrFocusPlugin "file:///home/samkel/.config/zellij/plugins/zextract.wasm" {
                   floating true;
                  };
             }
-
-        // Re-expose other default mode entries so the UI stays usable
-        bind "Ctrl Space" { SwitchToMode "Locked"; }
-        bind "Ctrl p"     { SwitchToMode "Pane"; }
-        bind "Ctrl t"     { SwitchToMode "Tab"; }
-        bind "Ctrl n"     { SwitchToMode "Resize"; }
-        bind "Ctrl s"     { SwitchToMode "Scroll"; }
-        bind "Ctrl o"     { SwitchToMode "Session"; }
-        
     }
 
     pane {
         // Return to normal
         bind "Esc"        { SwitchToMode "Normal"; }
-        bind "Ctrl Space" { SwitchToMode "Locked"; }
+        bind "Ctrl Space" { SwitchToMode "Tmux"; }
 
         // Split panes (tmux: prefix+v → split-window -h, prefix+h → split-window -v)
         // In tmux: -h = side-by-side (new pane to the Right), -v = stacked (new pane Down)
@@ -78,7 +75,6 @@ keybinds clear-defaults=false {
         bind "z"          { TogglePaneFrames; SwitchToMode "Normal"; }
         bind "w"          { ToggleFloatingPanes; SwitchToMode "Normal"; }
         bind "e"          { TogglePaneEmbedOrFloating; SwitchToMode "Normal"; }
-        bind "c"          { SwitchToMode "RenamePane"; PaneNameInput 0; }
         bind "Left"  "h"  { MoveFocus "Left"; }
         bind "Right" "l"  { MoveFocus "Right"; }
         bind "Up"    "k"  { MoveFocus "Up"; }
@@ -87,7 +83,7 @@ keybinds clear-defaults=false {
 
     resize {
         bind "Ctrl n"     { SwitchToMode "Normal"; }
-        bind "Ctrl Space" { SwitchToMode "Locked"; }
+        bind "Ctrl Space" { SwitchToMode "Tmux"; }
         bind "h" "Left"   { Resize "Increase Left"; }
         bind "j" "Down"   { Resize "Increase Down"; }
         bind "k" "Up"     { Resize "Increase Up"; }
@@ -102,7 +98,7 @@ keybinds clear-defaults=false {
 
     tab {
         bind "Ctrl t"               { SwitchToMode "Normal"; }
-        bind "Ctrl Space"           { SwitchToMode "Locked"; }
+        bind "Ctrl Space"           { SwitchToMode "Tmux"; }
         bind "r"                    { SwitchToMode "RenameTab"; TabNameInput 0; }
         bind "h" "Left" "Up"   "k"  { GoToPreviousTab; }
         bind "l" "Right" "Down" "j" { GoToNextTab; }
@@ -122,7 +118,7 @@ keybinds clear-defaults=false {
 
     scroll {
         bind "Ctrl s"                            { SwitchToMode "Normal"; }
-        bind "Ctrl Space"                        { SwitchToMode "Locked"; }
+        bind "Ctrl Space"                        { SwitchToMode "Tmux"; }
         bind "Ctrl c"                            { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down"                          { ScrollDown; }
         bind "k" "Up"                            { ScrollUp; }
@@ -140,7 +136,7 @@ keybinds clear-defaults=false {
 
     search {
         bind "Ctrl s"                         { SwitchToMode "Normal"; }
-        bind "Ctrl Space"                     { SwitchToMode "Locked"; }
+        bind "Ctrl Space"                     { SwitchToMode "Tmux"; }
         bind "Ctrl c"                         { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down"                       { ScrollDown; }
         bind "k" "Up"                         { ScrollUp; }
@@ -156,25 +152,25 @@ keybinds clear-defaults=false {
     }
 
     entersearch {
-        bind "Ctrl Space"   { SwitchToMode "Locked"; }
+        bind "Ctrl Space"   { SwitchToMode "Tmux"; }
         bind "Ctrl c" "Esc" { SwitchToMode "Scroll"; }
         bind "Enter"        { SwitchToMode "Search"; }
     }
 
     renametab {
-        bind "Ctrl Space" { SwitchToMode "Locked"; }
+        bind "Ctrl Space" { SwitchToMode "Tmux"; }
         bind "Ctrl c"     { SwitchToMode "Normal"; }
         bind "Esc"        { UndoRenameTab; SwitchToMode "Tab"; }
     }
 
     renamepane {
-        bind "Ctrl Space" { SwitchToMode "Locked"; }
+        bind "Ctrl Space" { SwitchToMode "Tmux"; }
         bind "Ctrl c"     { SwitchToMode "Normal"; }
         bind "Esc"        { UndoRenamePane; SwitchToMode "Pane"; }
     }
 
     session {
-        bind "Ctrl Space" { SwitchToMode "Locked"; }
+        bind "Ctrl Space" { SwitchToMode "Tmux"; }
         bind "Ctrl o"     { SwitchToMode "Normal"; }
         bind "Ctrl s"     { SwitchToMode "Scroll"; }
         bind "d"          { Detach; }
