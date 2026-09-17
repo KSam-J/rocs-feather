@@ -9,6 +9,12 @@ config.set_environment_variables = {
 SHELL = "/usr/bin/nu",
 }
 
+-- Theme
+config.color_scheme = 'Alabaster'
+--- Font
+config.font = wezterm.font("CaskaydiaCove Nerd Font Mono", {weight="Regular", stretch="Normal", style="Normal"})
+config.warn_about_missing_glyphs = false
+
 -- Window Aethetics to match Alacritty
 config.window_decorations = "NONE"
 config.enable_tab_bar = false
@@ -17,7 +23,7 @@ config.window_padding = {
   right = 0,
   top = 0,
   bottom = 0,
-}   
+}
 
 -- config.keys
 config.keys = {
@@ -29,9 +35,6 @@ config.keys = {
         }),
     }
 }
-
--- Theme
-config.color_scheme = 'Grayscale Light (base16)'
 
 -- Make less fancy
 config.hide_mouse_cursor_when_typing = false
