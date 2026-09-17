@@ -6,6 +6,7 @@ $env.config.buffer_editor = "/home/samkel/.local/bin/nvim"
 
 # APPEND to path
 $env.path ++= ["~/.local/bin"]
+$env.path ++= ["/home/samkel/.nvm/versions/node/v20.17.0/bin"]
 
 # Helper functions -----------------------------------------
 # Check if some command available in current shell
@@ -22,6 +23,10 @@ alias dlog = /home/samkel/Automation/daylog/dlog.py
 alias tt = tree -L 2 
 alias ttt = tree -L 3 
 
+# executables
+alias wezterm = flatpak run org.wezfurlong.wezterm
+alias giopen = /home/samkel/Automation/pandoras-box/giopen.sh
+
 def updoot [] {
   sudo apt update
   sudo apt upgrade
@@ -29,3 +34,10 @@ def updoot [] {
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+
+# Greeting -------------------------------------------------
+$env.config.show_banner = false
+# Login-banner style greeting: terminal, shell, multiplexer, and the time.
+source ~/Repos/rocs-feather/scripts/greeting.nu
+if $nu.is-interactive { feather-greeting }
+
