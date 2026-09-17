@@ -2,6 +2,15 @@ vim.cmd("let g:netrw_liststyle = 3")
 
 local opt = vim.opt
 
+-- Register this nvim instance on a stable socket so floppy-trigger can
+-- send :colorscheme commands to all running instances.
+do
+  local socket_dir = vim.fn.expand("$HOME/.local/state/nvim/sockets")
+  vim.fn.mkdir(socket_dir, "p")
+  local sock = socket_dir .. "/nvim-" .. vim.fn.getpid() .. ".sock"
+  vim.fn.serverstart(sock)
+end
+
 opt.relativenumber = true
 opt.number = true
 
