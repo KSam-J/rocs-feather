@@ -802,3 +802,10 @@
 
 [merge]
   # conflictStyle = zdiff3
+
+[but "alias"]
+	ap = commit -i
+    b = branch
+	c = commit
+	d = diff
+	s = status
