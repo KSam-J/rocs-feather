@@ -7,6 +7,7 @@ $env.config.buffer_editor = "/home/samkel/.local/bin/nvim"
 # APPEND to path
 $env.path ++= ["~/.local/bin"]
 $env.path ++= ["/home/samkel/.nvm/versions/node/v20.17.0/bin"]
+$env.path ++= ["/home/samkel/.cargo/bin"]
 
 # Helper functions -----------------------------------------
 # Check if some command available in current shell
