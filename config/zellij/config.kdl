@@ -22,19 +22,22 @@ keybinds clear-defaults=false {
     }
 
     normal {
-        // Re-expose other default mode entries so the UI stays usable
+        // Mods to mode navigation
         bind "Ctrl ;"     { SwitchToMode "Pane"; }
-        bind "Ctrl t"     { SwitchToMode "Tab"; }
-        bind "Ctrl e"     { SwitchToMode "Resize"; }
-        bind "Ctrl s"     { SwitchToMode "Scroll"; }
-        bind "Ctrl z"     { SwitchToMode "Session"; }
-        bind "Ctrl n"     { SwitchToMode "Move"; }
+
+        // Unbound Zellij modes can still be navigated to in TMUX mode
+        unbind "Ctrl p" // Pane:   conflicts shell->prev cmd
+        unbind "Ctrl o" // Session:conflicts nvim->prev cursor pos
+        unbind "Ctrl n" // Resize: conflicts shell->next cmd
+        unbind "Ctrl h" // Move:   conflicts nvim->harpoon
         
     }
 
     tmux {
-        unbind "Space" // NextSwapLayout
         bind "Ctrl Space" { SwitchToMode "Normal"; }
+
+        unbind "Space" // NextSwapLayout
+
         // Rebind the pane splits
         unbind "%" // newpane right
         unbind "/" // newpane down
@@ -44,7 +47,7 @@ keybinds clear-defaults=false {
         // Augments
         bind "f" {ToggleFloatingPanes; SwitchToMode "Normal";}
 
-        // Plugin - Zextract
+        // Plugins - Zextract
         bind "x" {LaunchOrFocusPlugin "file:///home/samkel/.config/zellij/plugins/zextract.wasm" {
                   floating true;
                  };
@@ -104,57 +107,9 @@ keybinds clear-defaults=false {
     }
 
     scroll {
-        bind "Ctrl s"                            { SwitchToMode "Normal"; }
-        bind "Ctrl c"                            { ScrollToBottom; SwitchToMode "Normal"; }
-        bind "j" "Down"                          { ScrollDown; }
-        bind "k" "Up"                            { ScrollUp; }
-        bind "Ctrl f" "PageDown" "Right" "l"     { PageScrollDown; }
-        bind "Ctrl b" "PageUp"   "Left"  "h"     { PageScrollUp; }
-        bind "d"                                 { HalfPageScrollDown; }
-        bind "u"                                 { HalfPageScrollUp; }
-        bind "e"                                 { EditScrollback; SwitchToMode "Normal"; }
-        bind "s"                                 { SwitchToMode "EnterSearch"; SearchInput 0; }
-
         // vi-style copy (tmux copy-mode-vi: v = begin-selection, y = copy-pipe-and-cancel)
         bind "v" { Copy; }
         bind "y" { Copy; SwitchToMode "Normal"; }
-    }
-
-    search {
-        bind "Ctrl s"                         { SwitchToMode "Normal"; }
-        bind "Ctrl c"                         { ScrollToBottom; SwitchToMode "Normal"; }
-        bind "j" "Down"                       { ScrollDown; }
-        bind "k" "Up"                         { ScrollUp; }
-        bind "Ctrl f" "PageDown" "Right" "l"  { PageScrollDown; }
-        bind "Ctrl b" "PageUp"   "Left"  "h"  { PageScrollUp; }
-        bind "d"                              { HalfPageScrollDown; }
-        bind "u"                              { HalfPageScrollUp; }
-        bind "n"                              { Search "down"; }
-        bind "p"                              { Search "up"; }
-        bind "c"                              { SearchToggleOption "CaseSensitivity"; }
-        bind "w"                              { SearchToggleOption "Wrap"; }
-        bind "o"                              { SearchToggleOption "WholeWord"; }
-    }
-
-    entersearch {
-        bind "Ctrl c" "Esc" { SwitchToMode "Scroll"; }
-        bind "Enter"        { SwitchToMode "Search"; }
-    }
-
-    renametab {
-        bind "Ctrl c"     { SwitchToMode "Normal"; }
-        bind "Esc"        { UndoRenameTab; SwitchToMode "Tab"; }
-    }
-
-    renamepane {
-        bind "Ctrl c"     { SwitchToMode "Normal"; }
-        bind "Esc"        { UndoRenamePane; SwitchToMode "Pane"; }
-    }
-
-    session {
-        bind "Ctrl o"     { SwitchToMode "Normal"; }
-        bind "Ctrl s"     { SwitchToMode "Scroll"; }
-        bind "d"          { Detach; }
     }
 
     shared_except "tmux" "locked" {
