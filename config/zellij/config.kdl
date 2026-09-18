@@ -57,6 +57,12 @@ keybinds clear-defaults=false {
         bind "y" { Copy; SwitchToMode "Normal"; }
     }
 
+    // Override use of MoveFocusOrTab
+    shared_except "locked" {
+        bind "Alt h" { MoveFocus "Left"; }
+        bind "Alt l" { MoveFocus "Right"; }
+    }
+
     shared_except "tmux" "locked" {
         unbind "Ctrl b"
         bind "Ctrl Space" { SwitchToMode "Tmux"; }
