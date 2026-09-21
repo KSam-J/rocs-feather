@@ -4,10 +4,10 @@ local config = wezterm.config_builder()
 -- /end Boilerplate
 
 -- Use nushell instead of bash
-config.default_prog = { '/usr/bin/nu', '-il'}
-config.set_environment_variables = {
-SHELL = "/usr/bin/nu",
-}
+--config.default_prog = { '/usr/bin/nu', '-il'}
+-- config.set_environment_variables = {
+-- SHELL = "/usr/bin/nu",
+-- }
 
 -- Theme
 config.color_scheme = 'Alabaster'
