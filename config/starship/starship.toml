@@ -310,4 +310,14 @@ impure_msg = '[⌽](bold dimmed red)'
 pure_msg = '[⌾](bold dimmed green)'
 unknown_msg = '[◌](bold dimmed ellow)'
 
+[shell]
+disabled = false
+format = "[$indicator]($style) "
+bash_indicator = "󰆍"
+fish_indicator = "󰈺"
+zsh_indicator = "󰬡"
+nu_indicator = "󰘧"
+powershell_indicator = "󰨊"
+style = "bold bright-cyan"
+
 [spack]
