@@ -19,14 +19,14 @@ def 'is-installed' [ app: string ] {
 alias l = if (is-installed lsd) {lsd --classify --group-directories-first} else {ls}
 alias ll = if (is-installed lsd) {lsd --long --all} else {ls --all --long}
 alias la = if (is-installed lsd) {lsd --classify --group-directories-first --all} else {ls --all}
-
-alias dlog = /home/samkel/Automation/daylog/dlog.py
 alias tt = tree -L 2 
 alias ttt = tree -L 3 
 
-# executables
-alias wezterm = flatpak run org.wezfurlong.wezterm
+# executables/scripts
+alias dlog = /home/samkel/Automation/daylog/dlog.py
+alias daysum = uv run --directory /home/samkel/Automation/daylog/ /home/samkel/Automation/daylog/daysum.py
 alias giopen = /home/samkel/Automation/pandoras-box/giopen.sh
+alias wezterm = flatpak run org.wezfurlong.wezterm
 
 def updoot [] {
   sudo apt update
