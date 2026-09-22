@@ -1,5 +1,6 @@
 // Zellij config
 
+session_name "tranquility"
 theme "starfield-light"
 
 // Enable mouse
@@ -11,6 +12,8 @@ scroll_buffer_size 100000
 // Copy to system clipboard via xsel (tmux: copy-pipe ... "xsel --clipboard")
 copy_command "xsel --clipboard"
 copy_on_select true
+
+default_layout "compact"
 
 keybinds clear-defaults=false {
 
@@ -31,21 +34,26 @@ keybinds clear-defaults=false {
     }
 
     tmux {
+        // Mode navigations
         bind "Ctrl Space" { SwitchToMode "Normal"; }
 
+        // Unbinds ----------------------
         unbind "Space" // NextSwapLayout
+        unbind "j"     // focus down
+        unbind "k"     // focus up
 
+        // Mods -------------------------
         // Rebind the pane splits
         unbind "%" // newpane right
         unbind "/" // newpane down
         bind "v"       { NewPane "Right"; SwitchToMode "Normal"; }
         bind "h"       { NewPane "Down";  SwitchToMode "Normal"; }
-
         // NewTab opens with cwd=$HOME
-        bind "c"       { NewTab "$HOME"; SwitchToMode "Normal"; }
+        bind "c"       { NewTab { cwd "/home/samkel"; }; SwitchToMode "Normal"; }
 
-        // Augments
+        // Augments ---------------------
         bind "f"       { ToggleFloatingPanes; SwitchToMode "Normal"; }
+        // bind "l"       { ShowFloatingPanes 0; SwitchToMode "Normal"; }
 
         // Plugins - Zextract
         bind "x" {
