@@ -53,7 +53,16 @@ keybinds clear-defaults=false {
 
         // Augments ---------------------
         bind "f"       { ToggleFloatingPanes; SwitchToMode "Normal"; }
-        // bind "l"       { ShowFloatingPanes 0; SwitchToMode "Normal"; }
+        bind "l"       {
+            Run "/home/samkel/.config/zellij/scripts/juggle-dlog.sh" {
+                close_on_exit true
+                floating true
+                width "1"
+                height "1"
+                x "100%"
+                y "100%"
+            }; SwitchToMode "Normal";
+        }
 
         // Plugins - Zextract
         bind "x" {

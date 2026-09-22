@@ -44,4 +44,5 @@ done
 zellij action new-pane \
     --floating \
     --name "$PANE_NAME" \
-    -- dlog
+    --close-on-exit \
+    -- /home/samkel/Automation/daylog/dlog.py
