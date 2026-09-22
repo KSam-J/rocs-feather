@@ -41,14 +41,18 @@ keybinds clear-defaults=false {
         bind "v"       { NewPane "Right"; SwitchToMode "Normal"; }
         bind "h"       { NewPane "Down";  SwitchToMode "Normal"; }
 
+        // NewTab opens with cwd=$HOME
+        bind "c"       { NewTab "$HOME"; SwitchToMode "Normal"; }
+
         // Augments
-        bind "f" {ToggleFloatingPanes; SwitchToMode "Normal";}
+        bind "f"       { ToggleFloatingPanes; SwitchToMode "Normal"; }
 
         // Plugins - Zextract
-        bind "x" {LaunchOrFocusPlugin "file:///home/samkel/.config/zellij/plugins/zextract.wasm" {
-                  floating true;
-                 };
-            }
+        bind "x" {
+            LaunchOrFocusPlugin "file:///home/samkel/.config/zellij/plugins/zextract.wasm" {
+                floating true;
+            };
+        }
     }
 
     scroll {
