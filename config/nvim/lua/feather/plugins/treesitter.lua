@@ -45,10 +45,11 @@ return {
             end,
         })
 
-        -- Incremental selection keymaps
-        vim.keymap.set("n", "<C-space>", function()
-            require("nvim-treesitter.incremental_selection").init_selection()
-        end, { desc = "TS init selection" })
+        -- NOTE: incremental selection was dropped in the nvim-treesitter "main"
+        -- rewrite (no more `nvim-treesitter.incremental_selection` module), so
+        -- the old keymap is removed. This also frees up <C-Space> in normal
+        -- mode so it doesn't collide/error with nvim-cmp's insert-mode
+        -- <C-Space> completion mapping.
 
         -- autotag setup (nvim-ts-autotag handles its own integration)
         require("nvim-ts-autotag").setup()
