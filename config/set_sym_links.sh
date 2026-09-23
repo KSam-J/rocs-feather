@@ -54,3 +54,5 @@ if [[ -d ~/.config/zellij && ! -L ~/.config/zellij ]]; then
 fi
 ln -sif $config_dir/zellij/ ~/.config/zellij
 
+# eilmeldung
+ln --symbolic --interactive --force --relative eilmeldung ~/.config/
