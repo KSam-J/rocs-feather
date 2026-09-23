@@ -54,9 +54,18 @@ Two Dockerfiles exist: `docker/Dockerfile` (Ubuntu 22.04) and `docker/Dockerfile
 `config/set_sym_links.sh` is the central wiring script. It symlinks everything in `config/` to the expected locations (`~/.config/`, `~/`, etc.). Editing a file in `config/` and re-running the script is all that's needed to apply changes.
 
 ### Neovim Config
-Located at `config/nvim/`. Entry point is `init.lua`, which bootstraps [lazy.nvim](https://github.com/folke/lazy.nvim). All modules live under `lua/feather/`:
-- `core/` — vim options and keymaps
-- `plugins/` — one file per plugin, each returning a lazy.nvim spec table (`return { "author/plugin", ... }`)
+`config/nvim/` is the source of truth for this user's Neovim configuration. When a request mentions Neovim, nvim, a plugin, a mapping, or an editor issue, inspect the relevant files under this directory before answering or editing. Do not assume a generic starter configuration applies.
+
+The entry point is `config/nvim/init.lua`, which loads `feather.core` and `feather.lazy`; `feather.lazy` bootstraps [lazy.nvim](https://github.com/folke/lazy.nvim) and imports the plugin specs. The main layout is:
+- `lua/feather/core/` — shared Vim options and keymaps
+- `lua/feather/plugins/` — one file per plugin, each returning a lazy.nvim spec table (`return { "author/plugin", ... }`)
+- `lua/feather/plugins/lsp/` — LSP and Mason plugin specifications
+- `lazy-lock.json` — locked plugin revisions
+- `colors/` — local colorschemes
+
+For Neovim changes, trace the relevant setting or plugin from `init.lua` through the `feather` modules and check nearby configuration for interactions. Be especially careful when editing leader-key bindings: inspect existing mappings and plugin mappings first, preserve the established leader-key convention, avoid collisions, and validate that a new mapping does not shadow or break existing commands.
+
+Neovim files are deployed through `config/set_sym_links.sh`; changes to the repository configuration may require rerunning that script before they affect the live configuration.
 
 ### Shell Config Layering
 - `config/bash_files/bashrc` — interactive shell entry point
