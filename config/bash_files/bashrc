@@ -362,3 +362,7 @@ cdreturn() {
 }
 # END CD-MARK
 
+# Git Butler completions
+if [[ $(is_command but) ]]; then
+    eval "$(but completions bash)"
+fi
