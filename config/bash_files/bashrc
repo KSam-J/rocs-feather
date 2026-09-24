@@ -252,6 +252,10 @@ if [[ -n ${ROCS_PATH} ]]; then
     export PATH="${PATH}:${ROCS_PATH}/bin"
 fi
 
+if command -v nu >/dev/null 2>&1 && [[ -r "${ROCS_PATH}/scripts/greeting.nu" ]]; then
+    nu -c "source '${ROCS_PATH}/scripts/greeting.nu'; feather-greeting bash"
+fi
+
 # BAT Manpager ----------------------------------------
 if [[ -x /usr/bin/bat || -x ~/.cargo/bin/bat ]]; then
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"

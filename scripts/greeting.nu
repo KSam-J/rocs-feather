@@ -50,8 +50,8 @@ def detect-multiplexer []: nothing -> string {
     "none  ·  flying solo"
 }
 
-def detect-shell []: nothing -> string {
-    $"nushell ($env.NU_VERSION? | default (version).version)"
+def detect-shell [shell?: string]: nothing -> string {
+    $shell | default $"nushell ($env.NU_VERSION? | default (version).version)"
 }
 
 # --- time flavor ----------------------------------------------------------
@@ -108,7 +108,7 @@ def uptime-line []: nothing -> string {
 
 # --- the greeting ---------------------------------------------------------
 
-export def feather-greeting []: nothing -> nothing {
+export def feather-greeting [shell?: string]: nothing -> nothing {
     let now = (date now)
     let mood = (time-mood ($now | format date "%H" | into int))
     let user = ($env.USER? | default ($env.USERNAME? | default "traveler"))
@@ -121,7 +121,7 @@ export def feather-greeting []: nothing -> nothing {
     print $"(ansi green)│(ansi reset)  (ansi dark_gray)($mood.icon) ($mood.word)(ansi reset)"
     print $"(ansi green)│(ansi reset)"
     print $"(ansi green)│(ansi reset)  (ansi cyan)('terminal' | fill -w $label)(ansi reset) (detect-terminal)"
-    print $"(ansi green)│(ansi reset)  (ansi cyan)('shell' | fill -w $label)(ansi reset) (detect-shell)"
+    print $"(ansi green)│(ansi reset)  (ansi cyan)('shell' | fill -w $label)(ansi reset) (detect-shell $shell)"
     print $"(ansi green)│(ansi reset)  (ansi cyan)('multiplexer' | fill -w $label)(ansi reset) (detect-multiplexer)"
     print $"(ansi green)│(ansi reset)  (ansi cyan)('system' | fill -w $label)(ansi reset) ($osname)  ·  up (uptime-line)"
     print $"(ansi green)│(ansi reset)"
