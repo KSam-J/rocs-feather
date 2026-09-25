@@ -33,6 +33,10 @@ keybinds clear-defaults=false {
         
     }
 
+    scroll {
+        bind "q" { ScrollToBottom; SwitchToMode "Normal"; }
+    }
+
     tmux {
         // Mode navigations
         bind "Ctrl Space" { SwitchToMode "Normal"; }
