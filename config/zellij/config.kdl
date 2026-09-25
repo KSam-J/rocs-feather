@@ -73,6 +73,7 @@ keybinds clear-defaults=false {
             LaunchOrFocusPlugin "file:///home/samkel/.config/zellij/plugins/zextract.wasm" {
                 floating true;
             };
+            SwitchToMode "Normal";
         }
     }
 
