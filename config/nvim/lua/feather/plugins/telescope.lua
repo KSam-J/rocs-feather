@@ -49,7 +49,8 @@ return {
 		local builtin = require("telescope.builtin")
 
 		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-		-- <leader>fr and <leader>fs freed up for Ferret's Ack/AckWord mappings.
+		-- <leader>fr freed up for Ferret's Ack/AckWord mappings.
+        keymap.set("n", "<leader>fs", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 		-- keymap.set("n", "<leader>fsy", function()
 		--	builtin.lsp_document_symbols({ symbol_width = 60 })
